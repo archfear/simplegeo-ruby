@@ -1,0 +1,38 @@
+{
+    "type": "Feature",
+    "id": "5373629", 
+    "created": 1269832510, 
+    "geometry": {
+        "type": "Point", 
+        "coordinates": [
+            -122.42608, 
+            37.759650000000001
+        ]
+    }, 
+    "properties": {
+        "layer": "com.simplegeo.global.geonames", 
+        "elevation": "22", 
+        "gtopo30": "60", 
+        "feature_code": "PRK", 
+        "last_modified": "2006-01-15", 
+        "country_code": "US", 
+        "alternatenames": "", 
+        "timezone": "America/Los_Angeles", 
+        "population": "0", 
+        "name": "Mission Dolores Park", 
+        "feature_class": "L", 
+        "cc2": "", 
+        "admin1": "CA", 
+        "admin3": "", 
+        "admin2": "075", 
+        "admin4": "", 
+        "asciiname": "Mission Dolores Park", 
+        "type": "place"
+    },
+    "layerLink": {
+        "href": "http://api.simplegeo.com/0.1/layer/com.simplegeo.global.geonames.json"
+    },
+    "selfLink": {
+        "href": "http://api.simplegeo.com/0.1/records/com.simplegeo.global.geonames/5373629.json"
+    }
+}
