@@ -91,7 +91,8 @@ module SimpleGeo
       end
 
       def get_record(layer, id)
-        get Endpoint.record(layer, id)
+        record_hash = get Endpoint.record(layer, id)
+        Record.parse_json(record_hash)
       end
 
       def add_records(layer, records)

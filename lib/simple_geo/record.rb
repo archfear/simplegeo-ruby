@@ -1,23 +1,21 @@
 module SimpleGeo
   class Record
-    
-    #TODO investigate whether to override id
     attr_accessor :layer, :id, :lat, :lon, :type, :created, :properties
   
     def initialize(options={})
       options = { 
-        :created => Time.now, 
-        :type => 'object', 
+        :created => Time.now,
+        :type => 'object',
         :properties => {}
       }.merge(options)
-    
-      layer = options[:layer]
-      id = options[:id]
-      lat = options[:lat]
-      lon = options[:lon]
-      type = options[:type]
-      created = options[:created]
-      properties = options[:properties]
+
+      @id = options[:id]
+      @layer = options[:layer]
+      @type = options[:type]
+      @lat = options[:lat]
+      @lon = options[:lon]
+      @created = options[:created]
+      @properties = options[:properties]
     end
     
     def to_hash
@@ -27,9 +25,9 @@ module SimpleGeo
         :created => created,
         :geometry => { 
           :type => 'Point',
-          :coordinates => [ body[:lon], body[:lat] ]
+          :coordinates => [ lon, lat ]
         },
-        :properties => properties.join({:type => type})
+        :properties => properties.merge({:type => type})
       }
     end
     
@@ -37,5 +35,16 @@ module SimpleGeo
       self.to_hash.to_json
     end
     
+    def self.parse_json(json_hash)
+      Record.new(
+        :id => json_hash['id'],
+        :layer => json_hash['layer'],
+        :type => json_hash['properties'].delete('type'),
+        :lat => json_hash['geometry']['coordinates'][1],
+        :lon => json_hash['geometry']['coordinates'][0],
+        :created => json_hash['created'],
+        :properties => json_hash['properties'].symbolize_keys
+      )
+    end
   end
 end
