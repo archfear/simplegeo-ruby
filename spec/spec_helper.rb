@@ -7,7 +7,9 @@ require 'spec/autorun'
 require 'fakeweb'
 
 Spec::Runner.configure do |config|
-  
+  config.before(:each) do
+    FakeWeb.clean_registry
+  end
 end
 
 def fixture_file(filename)

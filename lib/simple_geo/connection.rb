@@ -30,8 +30,7 @@ module SimpleGeo
       def request(method, endpoint, data)
         data = data.to_json  unless data.nil?
     
-        headers = {}
-        headers['User-Agent'] = "SimpleGeo Ruby Client v#{VERSION}"
+        headers = {'User-Agent' => "SimpleGeo Ruby Client v#{VERSION}"}
 
         if [:get, :delete].include?(method) && !data.nil?
           endpoint = endpoint + '?' + build_query(data)
@@ -42,6 +41,10 @@ module SimpleGeo
           puts "headers:"
           headers.each do |key, value|
             puts "#{key}=#{value}"
+          end
+          if data
+            puts "data:"
+            puts data.to_json
           end
         end
         

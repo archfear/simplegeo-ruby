@@ -22,7 +22,7 @@ module SimpleGeo
       {
         :type => 'Feature',
         :id => id,
-        :created => created,
+        :created => created.to_i,
         :geometry => { 
           :type => 'Point',
           :coordinates => [ lon, lat ]
@@ -45,7 +45,7 @@ module SimpleGeo
         :type => json_hash['properties'].delete('type'),
         :lat => json_hash['geometry']['coordinates'][1],
         :lon => json_hash['geometry']['coordinates'][0],
-        :created => json_hash['created'],
+        :created => Time.at(json_hash['created']),
         :properties => json_hash['properties'].symbolize_keys
       )
     end
