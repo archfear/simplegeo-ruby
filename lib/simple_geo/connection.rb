@@ -53,7 +53,7 @@ module SimpleGeo
         end
 
         if debug
-          puts "\nresponse:"
+          puts "\nresponse: #{response.code}"
           puts "headers:"
           response.header.each do |key, value|
             puts "#{key}=#{value}"

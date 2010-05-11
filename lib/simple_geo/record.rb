@@ -27,7 +27,10 @@ module SimpleGeo
           :type => 'Point',
           :coordinates => [ lon, lat ]
         },
-        :properties => properties.merge({:type => type})
+        :properties => properties.merge({
+          :type => type,
+          :layer => layer
+        })
       }
     end
     
@@ -38,7 +41,7 @@ module SimpleGeo
     def self.parse_json(json_hash)
       Record.new(
         :id => json_hash['id'],
-        :layer => json_hash['layer'],
+        :layer => json_hash['properties'].delete('layer'),
         :type => json_hash['properties'].delete('type'),
         :lat => json_hash['geometry']['coordinates'][1],
         :lon => json_hash['geometry']['coordinates'][0],
