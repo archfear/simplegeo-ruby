@@ -12,7 +12,7 @@ begin
     gem.authors = ["Dan Dofter"]
     
     gem.add_dependency("oauth", ">= 0.4.0")
-    gem.add_dependency("json_pure", "~> 1.2.4")
+    gem.add_dependency("json_pure", "~> 1.4.3")
 
     gem.add_development_dependency "rspec", ">= 1.2.9"
     gem.add_development_dependency("fakeweb", "~> 1.2.0")
