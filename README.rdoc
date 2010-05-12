@@ -78,7 +78,7 @@ Start by requiring SimpleGeo and setting your authentication credentials:
 
 === Getting nearby records
 
-  See http://help.simplegeo.com/faqs/api-documentation/endpoints for other optional params
+See http://help.simplegeo.com/faqs/api-documentation/endpoints for other optional params
 
   # by lat, lon
   records = SimpleGeo::Client.get_nearby_records('com.example.testlayer', 
@@ -103,7 +103,7 @@ Start by requiring SimpleGeo and setting your authentication credentials:
 
 === Other APIs
 
-  For more examples see: spec/client_spec.rb 
+For more examples see: spec/client_spec.rb 
 
 == Note on Patches/Pull Requests
  
