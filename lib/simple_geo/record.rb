@@ -52,16 +52,6 @@ module SimpleGeo
         :properties => HashUtils.recursively_symbolize_keys(json_hash['properties'])
       )
     end
-    
-    def self.parse_features_hash(layer, features_hash)
-      records = []
-      features_hash['features'].each do |feature_hash|
-        record = Record.parse_geojson_hash(feature_hash)
-        record.layer = layer
-        records << record
-      end
-      records
-    end
 
   end
 end
