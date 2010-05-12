@@ -4,11 +4,11 @@ describe "Client" do
   before do
     SimpleGeo::Client.set_credentials 'token', 'secret'
   end
-  
+
   context "getting a record" do
     context "with an id for an existing record" do
       before do
-        stub_request :get, 
+        stub_request :get,
           'http://api.simplegeo.com/0.1/records/com.simplegeo.global.geonames/5373629.json',
           :fixture_file => 'get_record.json'
       end
@@ -24,41 +24,41 @@ describe "Client" do
         record.lon.should == -122.42608
         record.properties.should == {
           :layer => "com.simplegeo.global.geonames",
-          :elevation => "22", 
-          :gtopo30 => "60", 
-          :feature_code => "PRK", 
-          :last_modified => "2006-01-15", 
-          :country_code => "US", 
-          :alternatenames => "", 
-          :timezone => "America/Los_Angeles", 
-          :population => "0", 
-          :name => "Mission Dolores Park", 
-          :feature_class => "L", 
-          :cc2 => "", 
-          :admin1 => "CA", 
-          :admin3 => "", 
-          :admin2 => "075", 
-          :admin4 => "", 
+          :elevation => "22",
+          :gtopo30 => "60",
+          :feature_code => "PRK",
+          :last_modified => "2006-01-15",
+          :country_code => "US",
+          :alternatenames => "",
+          :timezone => "America/Los_Angeles",
+          :population => "0",
+          :name => "Mission Dolores Park",
+          :feature_class => "L",
+          :cc2 => "",
+          :admin1 => "CA",
+          :admin3 => "",
+          :admin2 => "075",
+          :admin4 => "",
           :asciiname => "Mission Dolores Park"
         }
       end
     end
-  
+
     context "with an id for a nonexistant record" do
       before do
-        stub_request :get, 
+        stub_request :get,
           'http://api.simplegeo.com/0.1/records/com.simplegeo.global.geonames/foo.json',
           :fixture_file => 'no_such_record.json', :status => 404
       end
-      
+
       it "should raise a NotFound exception" do
-        lambda { 
+        lambda {
           SimpleGeo::Client.get_record('com.simplegeo.global.geonames', 'foo')
         }.should raise_exception(SimpleGeo::NotFound)
       end
     end
   end
-  
+
   #TODO: verify request data contains correct record data
   context "adding/updating a record" do
     before do
@@ -83,7 +83,7 @@ describe "Client" do
       }.should_not raise_exception
     end
   end
-  
+
   context "deleting a record" do
     before do
       stub_request :delete,
@@ -97,11 +97,11 @@ describe "Client" do
       }.should_not raise_exception
     end
   end
-  
+
   context "getting multiple records" do
     context "with ids for two existing records" do
       before do
-        stub_request :get, 
+        stub_request :get,
           'http://api.simplegeo.com/0.1/records/com.simplegeo.us.business/41531696,41530629.json',
           :fixture_file => 'get_records.json'
       end
@@ -131,16 +131,16 @@ describe "Client" do
           :state_fips => "06",
           :company_sics => [
             {
-              :sic => "72310000", 
-              :industry_class => "7", 
-              :relevancy => "1", 
+              :sic => "72310000",
+              :industry_class => "7",
+              :relevancy => "1",
               :naics_description => "BEAUTY SALONS",
               :naics => "812112",
               :sic_4 => "7231",
               :description => "BEAUTY SHOPS",
               :sic_4_description => "BEAUTY SHOPS"
-            }, 
-            { 
+            },
+            {
               :sic => "58130101",
               :industry_class => "5",
               :relevancy => "2",
@@ -150,7 +150,7 @@ describe "Client" do
               :description => "BAR (DRINKING PLACES)",
               :sic_4_description => "DRINKING PLACES"
             },
-            { 
+            {
               :sic => "58120310",
               :industry_class => "5",
               :relevancy => "3",
@@ -160,7 +160,7 @@ describe "Client" do
               :description => "GRILLS, ( EATING PLACES)",
               :sic_4_description => "EATING PLACES"
             }
-          ], 
+          ],
           :dpv_confirm => "Y",
           :zip => "94110",
           :dpc => "996",
@@ -168,7 +168,7 @@ describe "Client" do
           :carrier_route => "C036",
           :area_code => "415",
           :company_headings => [
-            { 
+            {
               :category_name => "Bars, Taverns & Cocktail Lounges",
               :condensed_name => "BARS GRILLS & PUBS",
               :normalized_id => "138001000",
@@ -189,7 +189,7 @@ describe "Client" do
           :ll_match_level => "R",
           :dso => "1",
           :company_phones => [
-            { 
+            {
               :val_flag => "C",
               :val_date => "2010-03-22",
               :phone_type => "P",
@@ -198,7 +198,7 @@ describe "Client" do
               :phone_number => "0323",
               :areacode => "415"
             }
-          ], 
+          ],
           :msa => "7360",
           :val_flag => "C"
         }
@@ -209,84 +209,84 @@ describe "Client" do
         records[1].lat.should == 37.755470000000003
         records[1].lon.should == -122.420646
         records[1].properties.should == {
-          :carrier_route => "C010", 
-          :pubdate => "2009-12-01", 
-          :ll_match_level => "R", 
-          :street_name => "22nd", 
-          :std_name => "Latin American Club", 
-          :val_flag => "C", 
-          :census_block_id => "004", 
+          :carrier_route => "C010",
+          :pubdate => "2009-12-01",
+          :ll_match_level => "R",
+          :street_name => "22nd",
+          :std_name => "Latin American Club",
+          :val_flag => "C",
+          :census_block_id => "004",
           :company_headings => [
             {
-              :normalized_id => "138004000", 
-              :condensed_name => "NIGHT CLUBS", 
-              :condensed_id => "138004000", 
-              :normalized_name => "NIGHT CLUBS", 
-              :category_id => "138000000", 
+              :normalized_id => "138004000",
+              :condensed_name => "NIGHT CLUBS",
+              :condensed_id => "138004000",
+              :normalized_name => "NIGHT CLUBS",
+              :category_id => "138000000",
               :category_name => "Bars, Taverns & Cocktail Lounges"
             }
-          ], 
+          ],
           :company_sics => [
             {
-              :sic_4 => "5813", 
-              :relevancy => "1", 
-              :description => "NIGHT CLUBS", 
-              :naics => "72241", 
-              :sic => "58130200", 
-              :industry_class => "5", 
-              :sic_4_description => "DRINKING PLACES", 
+              :sic_4 => "5813",
+              :relevancy => "1",
+              :description => "NIGHT CLUBS",
+              :naics => "72241",
+              :sic => "58130200",
+              :industry_class => "5",
+              :sic_4_description => "DRINKING PLACES",
               :naics_description => "DRINKING PLACES (ALCOHOLIC BEVERAGES)"
             }
-          ], 
-          :city => "San Francisco", 
-          :county_fips => "075", 
-          :zip => "94110", 
-          :mlsc => "4", 
-          :dso => "1", 
-          :state => "CA", 
-          :dpv_confirm => "Y", 
-          :housenumber => "3286", 
-          :msa => "7360", 
-          :phone_number => "2732", 
-          :exchange => "647", 
-          :area_code => "415", 
-          :censustract => "020800", 
-          :state_fips => "06", 
-          :street_type => "St", 
-          :business_name => "Latin American Club", 
-          :plus4 => "3033", 
-          :val_date => "2010-03-22", 
-          :dnc => "T", 
-          :confidence_score => "100", 
-          :time_zone => "4", 
-          :cbsa => "41860", 
-          :dpc => "862", 
+          ],
+          :city => "San Francisco",
+          :county_fips => "075",
+          :zip => "94110",
+          :mlsc => "4",
+          :dso => "1",
+          :state => "CA",
+          :dpv_confirm => "Y",
+          :housenumber => "3286",
+          :msa => "7360",
+          :phone_number => "2732",
+          :exchange => "647",
+          :area_code => "415",
+          :censustract => "020800",
+          :state_fips => "06",
+          :street_type => "St",
+          :business_name => "Latin American Club",
+          :plus4 => "3033",
+          :val_date => "2010-03-22",
+          :dnc => "T",
+          :confidence_score => "100",
+          :time_zone => "4",
+          :cbsa => "41860",
+          :dpc => "862",
           :company_phones => [
             {
-              :phone_number => "2732", 
-              :phone_type => "P", 
-              :val_date => "2010-03-22", 
-              :dnc => "T", 
-              :exchange => "647", 
-              :areacode => "415", 
+              :phone_number => "2732",
+              :phone_type => "P",
+              :val_date => "2010-03-22",
+              :dnc => "T",
+              :exchange => "647",
+              :areacode => "415",
               :val_flag => "C"
             }
-          ], 
-          :census_block_group => "4", 
+          ],
+          :census_block_group => "4",
           :z4_type => "S"
         }
       end
     end
-  
+
     context "with ids for nonexistant records" do
       before do
-        stub_request :get, 
+        stub_request :get,
           'http://api.simplegeo.com/0.1/records/com.simplegeo.global.geonames/foo,bar.json',
           :fixture_file => 'nonetype_not_iterable.json', :status => 500
       end
-      
+
       it "should raise a NotFound exception" do
-        lambda { 
+        lambda {
           SimpleGeo::Client.get_records('com.simplegeo.global.geonames', ['foo', 'bar'])
         }.should raise_exception(SimpleGeo::ServerError)
       end
@@ -340,7 +340,7 @@ describe "Client" do
     it "should create or update the record" do
       history = SimpleGeo::Client.get_history('com.simplegeo.global.geonames', '5373629')
       history.should == [
-        { 
+        {
           :created => Time.at(1269832510),
           :lat => 37.759650000000001,
           :lon => -122.42608
@@ -348,9 +348,9 @@ describe "Client" do
       ]
     end
   end
-  
+
   context "getting nearby records" do
-    before do      
+    before do
       @expected_records = {
         :next_cursor => "QVSEifz7gri4J0w8FSQJ06Z5S5lOw6gZ75Co-fBbBQJEr7XMqN32bjMKNc9kwLKqKyqtVvxR_t5hgWW6XDgPnPTY",
         :records => [
@@ -417,37 +417,37 @@ describe "Client" do
         ]
       }
     end
-    
+
     context "by lat and lon" do
       before do
         stub_request :get,
           'http://api.simplegeo.com/0.1/records/com.simplegeo.global.geonames/nearby/37.75965,-122.42608.json',
           :fixture_file => 'get_nearby.json'
       end
-      
+
       it "should return a hash of nearby records" do
-        records = SimpleGeo::Client.get_nearby_records('com.simplegeo.global.geonames', 
+        records = SimpleGeo::Client.get_nearby_records('com.simplegeo.global.geonames',
           :lat => 37.759650000000001,
           :lon => -122.42608)
         records.should == @expected_records
       end
     end
-    
+
     context "by geohash" do
       before do
         stub_request :get,
           'http://api.simplegeo.com/0.1/records/com.simplegeo.global.geonames/nearby/9q8yy1ujcsfm.json',
           :fixture_file => 'get_nearby.json'
       end
-      
+
       it "should return a hash of nearby records" do
-        records = SimpleGeo::Client.get_nearby_records('com.simplegeo.global.geonames', 
+        records = SimpleGeo::Client.get_nearby_records('com.simplegeo.global.geonames',
           :geohash => '9q8yy1ujcsfm')
         records.should == @expected_records
       end
     end
   end
-  
+
   context "getting a nearby address" do
     before do
       stub_request :get,
@@ -457,20 +457,20 @@ describe "Client" do
 
     it "should return a hash with the address information" do
       nearby_address = SimpleGeo::Client.get_nearby_address(37.759650000000001, -122.42608)
-      nearby_address.should == { 
-        :state_name => "California", 
-        :street_number => "580", 
-        :country => "US", 
-        :street => "Dolores St", 
-        :postal_code => "", 
-        :county_name => "San Francisco", 
-        :county_code => "075", 
-        :state_code => "CA", 
+      nearby_address.should == {
+        :state_name => "California",
+        :street_number => "580",
+        :country => "US",
+        :street => "Dolores St",
+        :postal_code => "",
+        :county_name => "San Francisco",
+        :county_code => "075",
+        :state_code => "CA",
         :place_name => "San Francisco"
       }
     end
   end
-  
+
   context "getting layer information" do
     context "for an existing layer" do
       before do
@@ -478,7 +478,7 @@ describe "Client" do
           'http://api.simplegeo.com/0.1/layer/io.path.testlayer.json',
           :fixture_file => 'layer_info.json'
       end
-      
+
       it "should return a hash containing the layer information" do
         layer_info = SimpleGeo::Client.get_layer_information('io.path.testlayer')
         layer_info.should == {
@@ -488,14 +488,14 @@ describe "Client" do
         }
       end
     end
-    
+
     context "for a nonexistant layer" do
       before do
         stub_request :get,
           'http://api.simplegeo.com/0.1/layer/io.path.testlayer.json',
           :status => 404
       end
-      
+
       it "should raise a NotFound exception" do
         lambda {
           SimpleGeo::Client.get_layer_information('io.path.testlayer')
@@ -503,14 +503,14 @@ describe "Client" do
       end
     end
   end
-  
+
   context "getting SpotRank information for a day, hour and location" do
     before do
       stub_request :get,
         'http://api.simplegeo.com/0.1/density/sat/16/37.75965,-122.42608.json',
         :fixture_file => 'get_density_by_hour.json'
     end
-    
+
     it "should return a hash containing the density information" do
       density_info = SimpleGeo::Client.get_density(37.75965, -122.42608, 'sat', '16' )
       density_info.should == {
@@ -533,14 +533,14 @@ describe "Client" do
       }
     end
   end
-  
+
   context "getting SpotRank information for a day and location" do
     before do
       stub_request :get,
         'http://api.simplegeo.com/0.1/density/sat/37.75965,-122.42608.json',
         :fixture_file => 'get_density_by_day.json'
     end
-    
+
     it "should return an array of hashes containing the density information" do
       density_info = SimpleGeo::Client.get_density(37.75965, -122.42608, 'sat')
       density_info.should == [
@@ -554,14 +554,14 @@ describe "Client" do
               [ 37.7587890625, -122.42578125 ],
               [ 37.7587890625, -122.4267578125 ]
             ]
-          }, 
-          :hour => 0, 
-          :trending_rank => 2, 
-          :local_rank => 4, 
-          :city_rank => 10, 
-          :worldwide_rank => 4, 
+          },
+          :hour => 0,
+          :trending_rank => 2,
+          :local_rank => 4,
+          :city_rank => 10,
+          :worldwide_rank => 4,
           :dayname => "sat"
-        }, 
+        },
         {
           :geometry => {
             :type => "Polygon",
@@ -572,14 +572,14 @@ describe "Client" do
               [ 37.7587890625, -122.42578125 ],
               [ 37.7587890625, -122.4267578125 ]
             ]
-          }, 
-          :hour => 1, 
-          :trending_rank => -2, 
-          :local_rank => 6, 
-          :city_rank => 10, 
-          :worldwide_rank => 6, 
+          },
+          :hour => 1,
+          :trending_rank => -2,
+          :local_rank => 6,
+          :city_rank => 10,
+          :worldwide_rank => 6,
           :dayname => "sat"
-        }, 
+        },
         {
           :geometry => {
             :type => "Polygon",
@@ -590,14 +590,14 @@ describe "Client" do
               [ 37.7587890625, -122.42578125 ],
               [ 37.7587890625, -122.4267578125 ]
             ]
-          }, 
-          :hour => 2, 
-          :trending_rank => 2, 
-          :local_rank => 2, 
-          :city_rank => 10, 
-          :worldwide_rank => 2, 
+          },
+          :hour => 2,
+          :trending_rank => 2,
+          :local_rank => 2,
+          :city_rank => 10,
+          :worldwide_rank => 2,
           :dayname => "sat"
-        }, 
+        },
         {
           :geometry => {
             :type => "Polygon",
@@ -608,14 +608,14 @@ describe "Client" do
               [ 37.7587890625, -122.42578125 ],
               [ 37.7587890625, -122.4267578125 ]
             ]
-          }, 
-          :hour => 3, 
-          :trending_rank => -2, 
-          :local_rank => 6, 
-          :city_rank => 10, 
-          :worldwide_rank => 6, 
+          },
+          :hour => 3,
+          :trending_rank => -2,
+          :local_rank => 6,
+          :city_rank => 10,
+          :worldwide_rank => 6,
           :dayname => "sat"
-        }, 
+        },
         {
           :geometry => {
             :type => "Polygon",
@@ -626,14 +626,14 @@ describe "Client" do
               [ 37.7587890625, -122.42578125 ],
               [ 37.7587890625, -122.4267578125 ]
             ]
-          }, 
-          :hour => 4, 
-          :trending_rank => -2, 
-          :local_rank => 4, 
-          :city_rank => 10, 
-          :worldwide_rank => 4, 
+          },
+          :hour => 4,
+          :trending_rank => -2,
+          :local_rank => 4,
+          :city_rank => 10,
+          :worldwide_rank => 4,
           :dayname => "sat"
-        }, 
+        },
         {
            :geometry => {
              :type => "Polygon",
@@ -644,14 +644,14 @@ describe "Client" do
                [ 37.7587890625, -122.42578125 ],
                [ 37.7587890625, -122.4267578125 ]
              ]
-           }, 
-          :hour => 6, 
-          :trending_rank => 2, 
-          :local_rank => 2, 
-          :city_rank => 10, 
-          :worldwide_rank => 2, 
+           },
+          :hour => 6,
+          :trending_rank => 2,
+          :local_rank => 2,
+          :city_rank => 10,
+          :worldwide_rank => 2,
           :dayname => "sat"
-        }, 
+        },
         {
           :geometry => {
              :type => "Polygon",
@@ -662,14 +662,14 @@ describe "Client" do
                [ 37.7587890625, -122.42578125 ],
                [ 37.7587890625, -122.4267578125 ]
              ]
-           }, 
-          :hour => 7, 
-          :trending_rank => 1, 
-          :local_rank => 5, 
-          :city_rank => 10, 
-          :worldwide_rank => 5, 
+           },
+          :hour => 7,
+          :trending_rank => 1,
+          :local_rank => 5,
+          :city_rank => 10,
+          :worldwide_rank => 5,
           :dayname => "sat"
-        }, 
+        },
         {
            :geometry => {
              :type => "Polygon",
@@ -680,14 +680,14 @@ describe "Client" do
                [ 37.7587890625, -122.42578125 ],
                [ 37.7587890625, -122.4267578125 ]
              ]
-           }, 
-          :hour => 8, 
-          :trending_rank => 0, 
-          :local_rank => 6, 
-          :city_rank => 10, 
-          :worldwide_rank => 6, 
+           },
+          :hour => 8,
+          :trending_rank => 0,
+          :local_rank => 6,
+          :city_rank => 10,
+          :worldwide_rank => 6,
           :dayname => "sat"
-        }, 
+        },
         {
            :geometry => {
              :type => "Polygon",
@@ -698,14 +698,14 @@ describe "Client" do
                [ 37.7587890625, -122.42578125 ],
                [ 37.7587890625, -122.4267578125 ]
              ]
-           }, 
-          :hour => 9, 
-          :trending_rank => 0, 
-          :local_rank => 6, 
-          :city_rank => 10, 
-          :worldwide_rank => 6, 
+           },
+          :hour => 9,
+          :trending_rank => 0,
+          :local_rank => 6,
+          :city_rank => 10,
+          :worldwide_rank => 6,
           :dayname => "sat"
-        }, 
+        },
         {
            :geometry => {
              :type => "Polygon",
@@ -716,14 +716,14 @@ describe "Client" do
                [ 37.7587890625, -122.42578125 ],
                [ 37.7587890625, -122.4267578125 ]
              ]
-           }, 
-          :hour => 10, 
-          :trending_rank => 2, 
-          :local_rank => 6, 
-          :city_rank => 10, 
-          :worldwide_rank => 6, 
+           },
+          :hour => 10,
+          :trending_rank => 2,
+          :local_rank => 6,
+          :city_rank => 10,
+          :worldwide_rank => 6,
           :dayname => "sat"
-        }, 
+        },
         {
           :geometry => {
             :type => "Polygon",
@@ -734,14 +734,14 @@ describe "Client" do
               [ 37.7587890625, -122.42578125 ],
               [ 37.7587890625, -122.4267578125 ]
             ]
-          }, 
-          :hour => 11, 
-          :trending_rank => -1, 
-          :local_rank => 8, 
-          :city_rank => 10, 
-          :worldwide_rank => 8, 
+          },
+          :hour => 11,
+          :trending_rank => -1,
+          :local_rank => 8,
+          :city_rank => 10,
+          :worldwide_rank => 8,
           :dayname => "sat"
-        }, 
+        },
         {
            :geometry => {
              :type => "Polygon",
@@ -752,14 +752,14 @@ describe "Client" do
                [ 37.7587890625, -122.42578125 ],
                [ 37.7587890625, -122.4267578125 ]
              ]
-           }, 
-          :hour => 12, 
-          :trending_rank => 1, 
-          :local_rank => 7, 
-          :city_rank => 10, 
-          :worldwide_rank => 7, 
+           },
+          :hour => 12,
+          :trending_rank => 1,
+          :local_rank => 7,
+          :city_rank => 10,
+          :worldwide_rank => 7,
           :dayname => "sat"
-        }, 
+        },
         {
            :geometry => {
              :type => "Polygon",
@@ -770,14 +770,14 @@ describe "Client" do
                [ 37.7587890625, -122.42578125 ],
                [ 37.7587890625, -122.4267578125 ]
              ]
-           }, 
-          :hour => 13, 
-          :trending_rank => 0, 
-          :local_rank => 8, 
-          :city_rank => 10, 
-          :worldwide_rank => 8, 
+           },
+          :hour => 13,
+          :trending_rank => 0,
+          :local_rank => 8,
+          :city_rank => 10,
+          :worldwide_rank => 8,
           :dayname => "sat"
-        }, 
+        },
         {
            :geometry => {
              :type => "Polygon",
@@ -788,14 +788,14 @@ describe "Client" do
                [ 37.7587890625, -122.42578125 ],
                [ 37.7587890625, -122.4267578125 ]
              ]
-           }, 
-          :hour => 14, 
-          :trending_rank => 0, 
-          :local_rank => 8, 
-          :city_rank => 10, 
-          :worldwide_rank => 8, 
+           },
+          :hour => 14,
+          :trending_rank => 0,
+          :local_rank => 8,
+          :city_rank => 10,
+          :worldwide_rank => 8,
           :dayname => "sat"
-        }, 
+        },
         {
            :geometry => {
              :type => "Polygon",
@@ -806,14 +806,14 @@ describe "Client" do
                [ 37.7587890625, -122.42578125 ],
                [ 37.7587890625, -122.4267578125 ]
              ]
-           }, 
-          :hour => 15, 
-          :trending_rank => 0, 
-          :local_rank => 8, 
-          :city_rank => 10, 
-          :worldwide_rank => 8, 
+           },
+          :hour => 15,
+          :trending_rank => 0,
+          :local_rank => 8,
+          :city_rank => 10,
+          :worldwide_rank => 8,
           :dayname => "sat"
-        }, 
+        },
         {
            :geometry => {
              :type => "Polygon",
@@ -824,14 +824,14 @@ describe "Client" do
                [ 37.7587890625, -122.42578125 ],
                [ 37.7587890625, -122.4267578125 ]
              ]
-           }, 
-          :hour => 16, 
-          :trending_rank => 0, 
-          :local_rank => 8, 
-          :city_rank => 10, 
-          :worldwide_rank => 8, 
+           },
+          :hour => 16,
+          :trending_rank => 0,
+          :local_rank => 8,
+          :city_rank => 10,
+          :worldwide_rank => 8,
           :dayname => "sat"
-        }, 
+        },
         {
            :geometry => {
              :type => "Polygon",
@@ -842,14 +842,14 @@ describe "Client" do
                [ 37.7587890625, -122.42578125 ],
                [ 37.7587890625, -122.4267578125 ]
              ]
-           }, 
-          :hour => 17, 
-          :trending_rank => 0, 
-          :local_rank => 8, 
-          :city_rank => 10, 
-          :worldwide_rank => 8, 
+           },
+          :hour => 17,
+          :trending_rank => 0,
+          :local_rank => 8,
+          :city_rank => 10,
+          :worldwide_rank => 8,
           :dayname => "sat"
-        }, 
+        },
         {
            :geometry => {
              :type => "Polygon",
@@ -860,14 +860,14 @@ describe "Client" do
                [ 37.7587890625, -122.42578125 ],
                [ 37.7587890625, -122.4267578125 ]
              ]
-           }, 
-          :hour => 18, 
-          :trending_rank => 0, 
-          :local_rank => 8, 
-          :city_rank => 10, 
-          :worldwide_rank => 8, 
+           },
+          :hour => 18,
+          :trending_rank => 0,
+          :local_rank => 8,
+          :city_rank => 10,
+          :worldwide_rank => 8,
           :dayname => "sat"
-        }, 
+        },
         {
            :geometry => {
              :type => "Polygon",
@@ -878,14 +878,14 @@ describe "Client" do
                [ 37.7587890625, -122.42578125 ],
                [ 37.7587890625, -122.4267578125 ]
              ]
-           }, 
-          :hour => 19, 
-          :trending_rank => 0, 
-          :local_rank => 8, 
-          :city_rank => 10, 
-          :worldwide_rank => 8, 
+           },
+          :hour => 19,
+          :trending_rank => 0,
+          :local_rank => 8,
+          :city_rank => 10,
+          :worldwide_rank => 8,
           :dayname => "sat"
-        }, 
+        },
         {
            :geometry => {
              :type => "Polygon",
@@ -896,14 +896,14 @@ describe "Client" do
                [ 37.7587890625, -122.42578125 ],
                [ 37.7587890625, -122.4267578125 ]
              ]
-           }, 
-          :hour => 20, 
-          :trending_rank => 0, 
-          :local_rank => 8, 
-          :city_rank => 10, 
-          :worldwide_rank => 8, 
+           },
+          :hour => 20,
+          :trending_rank => 0,
+          :local_rank => 8,
+          :city_rank => 10,
+          :worldwide_rank => 8,
           :dayname => "sat"
-        }, 
+        },
         {
            :geometry => {
              :type => "Polygon",
@@ -914,14 +914,14 @@ describe "Client" do
                [ 37.7587890625, -122.42578125 ],
                [ 37.7587890625, -122.4267578125 ]
              ]
-           }, 
-          :hour => 21, 
-          :trending_rank => -2, 
-          :local_rank => 8, 
-          :city_rank => 10, 
-          :worldwide_rank => 8, 
+           },
+          :hour => 21,
+          :trending_rank => -2,
+          :local_rank => 8,
+          :city_rank => 10,
+          :worldwide_rank => 8,
           :dayname => "sat"
-        }, 
+        },
         {
            :geometry => {
              :type => "Polygon",
@@ -932,14 +932,14 @@ describe "Client" do
                [ 37.7587890625, -122.42578125 ],
                [ 37.7587890625, -122.4267578125 ]
              ]
-           }, 
-          :hour => 22, 
-          :trending_rank => 0, 
-          :local_rank => 5, 
-          :city_rank => 10, 
-          :worldwide_rank => 6, 
+           },
+          :hour => 22,
+          :trending_rank => 0,
+          :local_rank => 5,
+          :city_rank => 10,
+          :worldwide_rank => 6,
           :dayname => "sat"
-        }, 
+        },
         {
           :geometry => {
              :type => "Polygon",
@@ -950,30 +950,30 @@ describe "Client" do
                [ 37.7587890625, -122.42578125 ],
                [ 37.7587890625, -122.4267578125 ]
              ]
-           }, 
-          :hour => 23, 
-          :trending_rank => 1, 
-          :local_rank => 5, 
-          :city_rank => 10, 
-          :worldwide_rank => 5, 
+           },
+          :hour => 23,
+          :trending_rank => 1,
+          :local_rank => 5,
+          :city_rank => 10,
+          :worldwide_rank => 5,
           :dayname => "sat"
         }
       ]
     end
   end
-  
+
   context "getting contains info for a set of coordinates" do
     before do
       stub_request :get,
         'http://api.simplegeo.com/0.1/contains/37.7587890625,-122.4267578125.json',
         :fixture_file => 'contains.json'
     end
-    
+
     it "should return a hash with the correct info" do
       info = SimpleGeo::Client.get_contains(37.7587890625, -122.4267578125)
       info.should == [
         {
-          :bounds => 
+          :bounds =>
           [
             -122.435188,
              37.756093,
@@ -986,7 +986,7 @@ describe "Client" do
            :name => "06075020600"
         },
         {
-          :bounds => 
+          :bounds =>
           [
             -123.17382499999999,
              37.639829999999996,
@@ -999,7 +999,7 @@ describe "Client" do
            :name => "San Francisco"
         },
         {
-          :bounds => 
+          :bounds =>
           [
             -123.17382499999999,
              37.639829999999996,
@@ -1012,7 +1012,7 @@ describe "Client" do
            :name => "San Francisco"
         },
         {
-          :bounds => 
+          :bounds =>
           [
             -122.612285,
              37.708131000000002,
@@ -1025,7 +1025,7 @@ describe "Client" do
            :name => "Congressional District 8"
         },
         {
-          :bounds => 
+          :bounds =>
           [
             -179.14247147726383,
              18.930137634111077,
@@ -1038,7 +1038,7 @@ describe "Client" do
            :name => "United States of America"
         },
         {
-          :bounds => 
+          :bounds =>
           [
             -122.428882,
              37.758029999999998,
@@ -1051,7 +1051,7 @@ describe "Client" do
            :name => "Mission Dolores"
         },
         {
-          :bounds => 
+          :bounds =>
           [
             -122.51666666668193,
              37.191666666628507,
@@ -1064,7 +1064,7 @@ describe "Client" do
            :name => "San Francisco1"
         },
         {
-          :bounds => 
+          :bounds =>
           [
             -122.451553,
              37.746687000000001,
@@ -1077,7 +1077,7 @@ describe "Client" do
            :name => "94114"
         },
         {
-          :bounds => 
+          :bounds =>
           [
             -124.48200299999999,
              32.528832000000001,
@@ -1092,20 +1092,20 @@ describe "Client" do
       ]
     end
   end
-  
+
   context "getting overlaps info for a set of coordinates" do
     before do
       stub_request :get,
         'http://api.simplegeo.com/0.1/overlaps/32.528832,-124.482003,42.009517,-114.131211.json',
         :fixture_file => 'overlaps.json'
     end
-    
+
     it "should return a hash with the correct info" do
-      info = SimpleGeo::Client.get_overlaps(32.528832000000001, -124.48200299999999, 
+      info = SimpleGeo::Client.get_overlaps(32.528832000000001, -124.48200299999999,
         42.009516999999995, -114.13121099999999)
       info.should == [
         {
-          :bounds => 
+          :bounds =>
           [
             -122.998802,
              42.002634,
@@ -1118,7 +1118,7 @@ describe "Client" do
            :name => "41029002300"
         },
         {
-          :bounds => 
+          :bounds =>
           [
             -123.858086,
              41.995095999999997,
@@ -1131,7 +1131,7 @@ describe "Client" do
            :name => "41033361600"
         },
         {
-          :bounds => 
+          :bounds =>
           [
             -123.231629,
              42.003022000000001,
@@ -1146,7 +1146,7 @@ describe "Client" do
       ]
     end
   end
-  
+
   # this API call seems to always return a 404
   # context "getting boundary info by id" do
   #   before do
@@ -1154,11 +1154,11 @@ describe "Client" do
   #       'http://api.simplegeo.com/0.1/boundary/Neighborhood:Mission_Dolores:9q8yy4.json',
   #       :fixture_file => 'boundary.json'
   #   end
-  #   
+  #
   #   it "should return a hash with the correct info" do
   #     info = SimpleGeo::Client.get_boundary("Neighborhood:Mission_Dolores:9q8yy4")
   #     info.should == [
-  # 
+  #
   #     ]
   #   end
   # end

@@ -1,32 +1,32 @@
 module SimpleGeo
   class Connection
-    
+
     attr_accessor :debug
-    
+
     def initialize(token, secret)
       consumer = OAuth::Consumer.new(token, secret, :site => REALM)
       @access_token = OAuth::AccessToken.new(consumer)
       debug = false
     end
-      
+
     def get(endpoint, data=nil)
       request :get, endpoint, data
     end
-  
+
     def delete(endpoint, data=nil)
       request :delete, endpoint, data
     end
-  
+
     def post(endpoint, data=nil)
       request :post, endpoint, data
     end
-  
+
     def put(endpoint, data=nil)
       request :put, endpoint, data
     end
-  
+
     private
-    
+
       def request(method, endpoint, data)
         headers = {'User-Agent' => "SimpleGeo Ruby Client v#{VERSION}"}
 
@@ -45,7 +45,7 @@ module SimpleGeo
             puts data.to_json
           end
         end
-        
+
         case method
           when :get, :delete
             response = @access_token.request(method, endpoint, headers)
@@ -63,9 +63,9 @@ module SimpleGeo
           puts "body:"
           puts response.body
         end
-        
+
         raise_errors(response)
-  
+
         if response.body.empty?
           content = nil
         else
@@ -75,7 +75,7 @@ module SimpleGeo
             raise DecodeError, "content: <#{response.body}>"
           end
         end
-    
+
         content
       end
 
@@ -104,6 +104,6 @@ module SimpleGeo
             end
         end
       end
-    
-  end  
+
+  end
 end

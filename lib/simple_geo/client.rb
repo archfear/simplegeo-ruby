@@ -1,26 +1,26 @@
 module SimpleGeo
-  
+
   class Client
 
     @@connection = nil
     @@debug = false
-    
+
     class << self
-      
+
       def set_credentials(token, secret)
         @@connection = Connection.new(token, secret)
         @@connection.debug = @@debug
       end
-      
+
       def debug=(debug_flag)
         @@debug = debug_flag
         @@connection.debug = @@debug  if @@connection
       end
-      
+
       def debug
         @@debug
       end
-      
+
       def add_record(record)
         raise SimpleGeoError, "Record has no layer"  if record.layer.nil?
         put Endpoint.record(record.layer, record.id), record
@@ -44,7 +44,7 @@ module SimpleGeo
         }
         post Endpoint.add_records(layer), features
       end
-    
+
       # This request currently generates a 500 error if an unknown id is passed in.
       def get_records(layer, ids)
         features_hash = get Endpoint.records(layer, ids)
@@ -69,17 +69,17 @@ module SimpleGeo
         end
         history
       end
-      
+
       def get_nearby_records(layer, options)
         if options[:geohash]
           endpoint = Endpoint.nearby_geohash(layer, options.delete(:geohash))
         elsif options[:lat] && options[:lon]
-          endpoint = Endpoint.nearby_coordinates(layer, 
+          endpoint = Endpoint.nearby_coordinates(layer,
             options.delete(:lat), options.delete(:lon))
         else
           raise SimpleGeoError, "Either geohash or lat and lon is required"
         end
-        
+
         options = nil  if options.empty?
         features_hash = get(endpoint, options)
         nearby_records = {
@@ -97,18 +97,18 @@ module SimpleGeo
         end
         nearby_records
       end
-      
+
       def get_nearby_address(lat, lon)
         geojson_hash = get Endpoint.nearby_address(lat, lon)
         HashUtils.symbolize_keys geojson_hash['properties']
       end
-      
+
       def get_layer_information(layer)
         layer_info = get Endpoint.layer(layer)
         layer_info.delete('selfLink')
         HashUtils.symbolize_keys(layer_info)
       end
-      
+
       def get_density(lat, lon, day, hour=nil)
         geojson_hash = get Endpoint.density(lat, lon, day, hour)
         geojson_hash = HashUtils.recursively_symbolize_keys(geojson_hash)
@@ -160,7 +160,7 @@ module SimpleGeo
         @@connection.put endpoint, data
       end
     end
-    
+
   end
-  
+
 end

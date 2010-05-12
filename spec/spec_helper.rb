@@ -7,10 +7,10 @@ require 'spec/autorun'
 require 'fakeweb'
 
 Spec::Runner.configure do |config|
-  
+
   # don't allow any external connections
   FakeWeb.allow_net_connect = false
-  
+
   config.before(:each) do
     FakeWeb.clean_registry
   end

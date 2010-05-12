@@ -12,7 +12,7 @@ module SimpleGeo
   API_VERSION = '0.1'.freeze
   REALM = "http://api.simplegeo.com"
   VERSION = File.read(File.join(File.dirname(__FILE__), '..', 'VERSION'))
-    
+
   class SimpleGeoError < StandardError; end
   class Unauthorized < SimpleGeoError; end
   class NotFound < SimpleGeoError; end

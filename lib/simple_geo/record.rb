@@ -1,9 +1,9 @@
 module SimpleGeo
   class Record
     attr_accessor :layer, :id, :lat, :lon, :type, :created, :properties
-  
+
     def initialize(options={})
-      options = { 
+      options = {
         :created => Time.now,
         :type => 'object',
         :properties => {}
@@ -17,13 +17,13 @@ module SimpleGeo
       @created = options[:created]
       @properties = options[:properties]
     end
-    
+
     def to_hash
       {
         :type => 'Feature',
         :id => id,
         :created => created.to_i,
-        :geometry => { 
+        :geometry => {
           :type => 'Point',
           :coordinates => [ lon, lat ]
         },
@@ -33,15 +33,15 @@ module SimpleGeo
         })
       }
     end
-    
+
     def to_json
       self.to_hash.to_json
     end
-    
+
     def ==(other)
       other.class == self.class && self.to_hash == other.to_hash
     end
-    
+
     def self.parse_geojson_hash(json_hash)
       Record.new(
         :id => json_hash['id'],
