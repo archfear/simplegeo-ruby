@@ -102,7 +102,7 @@ module SimpleGeo
           :type => 'FeatureCollection',
           :features => records.collect { |record| record.to_hash }
         }
-        post Endpoint.add_records(layer), "POST", features
+        post Endpoint.add_records(layer), features
       end
     
       # This request currently generates a 500 error if an unknown id is passed in.

@@ -84,6 +84,20 @@ describe "Client" do
     end
   end
   
+  context "deleting a record" do
+    before do
+      stub_request :delete,
+        'http://api.simplegeo.com/0.1/records/io.path.testlayer/1234.json',
+        :status => 202
+    end
+
+    it "should delete the record" do
+      lambda {
+        SimpleGeo::Client.delete_record('io.path.testlayer', '1234')
+      }.should_not raise_exception
+    end
+  end
+  
   context "getting multiple records" do
     context "with ids for two existing records" do
       before do
@@ -278,5 +292,42 @@ describe "Client" do
       end
     end
   end
-end 
-  
+
+  context "adding multiple records" do
+    before do
+      stub_request :post,
+        'http://api.simplegeo.com/0.1/records/io.path.testlayer.json',
+        :status => 202
+    end
+
+    it "should create or update the record" do
+      layer = 'io.path.testlayer'
+      lambda {
+        records = [
+          SimpleGeo::Record.new({
+            :id => '1234',
+            :created => 1269832510,
+            :lat => 37.759650000000001,
+            :lon => -122.42608,
+            :layer => layer,
+            :properties => {
+              :test_property => 'foobar'
+            }
+          }),
+          SimpleGeo::Record.new({
+            :id => '5678',
+            :created => 1269832510,
+            :lat => 37.755470000000003,
+            :lon => -122.420646,
+            :layer => layer,
+            :properties => {
+              :mad_prop => 'baz'
+            }
+          })
+        ]
+        SimpleGeo::Client.add_records(layer, records)
+      }.should_not raise_exception
+    end
+  end
+
+end
