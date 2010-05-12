@@ -455,7 +455,7 @@ describe "Client" do
         :fixture_file => 'nearby_address.json'
     end
 
-    it "should create or update the record" do
+    it "should return a hash with the address information" do
       nearby_addresses = SimpleGeo::Client.get_nearby_address(37.759650000000001, -122.42608)
       nearby_addresses.should == { 
         :state_name => "California", 
@@ -467,6 +467,23 @@ describe "Client" do
         :county_code => "075", 
         :state_code => "CA", 
         :place_name => "San Francisco"
+      }
+    end
+  end
+  
+  context "getting layer information" do
+    before do
+      stub_request :get,
+        'http://api.simplegeo.com/0.1/layer/io.path.testlayer.json',
+        :fixture_file => 'layer_info.json'
+    end
+
+    it "should return a hash containing the layer information" do
+      layer_info = SimpleGeo::Client.get_layer_information('io.path.testlayer')
+      layer_info.should == {
+        :name => "io.path.testlayer",
+        :public => false,
+        :callback_urls => []
       }
     end
   end

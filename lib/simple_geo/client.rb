@@ -168,7 +168,9 @@ module SimpleGeo
       end
       
       def get_layer_information(layer)
-        get Endpoint.layer(layer)
+        layer_info = get Endpoint.layer(layer)
+        layer_info.delete('selfLink')
+        layer_info.symbolize_keys
       end
       
       def get_density(lat, lon, day, hour=nil)

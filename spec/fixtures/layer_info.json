@@ -1,0 +1,8 @@
+{
+    "callback_urls": [], 
+    "name": "io.path.testlayer", 
+    "selfLink": {
+        "href": "http://api.simplegeo.com/0.1/layer/io.path.testlayer.json"
+    }, 
+    "public": false
+}
