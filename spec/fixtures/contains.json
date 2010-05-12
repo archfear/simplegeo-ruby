@@ -1,0 +1,127 @@
+[
+    {
+        "bounds": 
+        [
+            -122.435188,
+             37.756093,
+             -122.42555,
+             37.763030999999998
+        ],
+         "type": "Census Tract",
+         "id": "Census_Tract:06075020600:9q8yy1",
+         "abbr": "",
+         "name": "06075020600"
+    },
+     
+    {
+        "bounds": 
+        [
+            -123.17382499999999,
+             37.639829999999996,
+             -122.28178,
+             37.929823999999996
+        ],
+         "type": "County",
+         "id": "County:San_Francisco:9q8yvv",
+         "abbr": "",
+         "name": "San Francisco"
+    },
+     
+    {
+        "bounds": 
+        [
+            -123.17382499999999,
+             37.639829999999996,
+             -122.28178,
+             37.929823999999996
+        ],
+         "type": "City",
+         "id": "City:San_Francisco:9q8yvv",
+         "abbr": "",
+         "name": "San Francisco"
+    },
+     
+    {
+        "bounds": 
+        [
+            -122.612285,
+             37.708131000000002,
+             -122.28178,
+             37.929823999999996
+        ],
+         "type": "Congressional District",
+         "id": "Congressional_District:Congressional_Di:9q8yyn",
+         "abbr": "",
+         "name": "Congressional District 8"
+    },
+     
+    {
+        "bounds": 
+        [
+            -179.14247147726383,
+             18.930137634111077,
+             179.78114994357418,
+             71.412179667308919
+        ],
+         "type": "Country",
+         "id": "Country:United_States_of:9z12zg",
+         "abbr": "",
+         "name": "United States of America"
+    },
+     
+    {
+        "bounds": 
+        [
+            -122.428882,
+             37.758029999999998,
+             -122.42138199999999,
+             37.772263000000002
+        ],
+         "type": "Neighborhood",
+         "id": "Neighborhood:Mission_Dolores:9q8yy4",
+         "abbr": "",
+         "name": "Mission Dolores"
+    },
+     
+    {
+        "bounds": 
+        [
+            -122.51666666668193,
+             37.191666666628507,
+             -121.73333333334497,
+             38.041666666640907
+        ],
+         "type": "Urban Area",
+         "id": "Urban_Area:San_Francisco1:9q9jsg",
+         "abbr": "",
+         "name": "San Francisco1"
+    },
+     
+    {
+        "bounds": 
+        [
+            -122.451553,
+             37.746687000000001,
+             -122.424773,
+             37.770451999999999
+        ],
+         "type": "Postal",
+         "id": "Postal:94114:9q8yvc",
+         "abbr": "",
+         "name": "94114"
+    },
+     
+    {
+        "bounds": 
+        [
+            -124.48200299999999,
+             32.528832000000001,
+             -114.13121099999999,
+             42.009516999999995
+        ],
+         "type": "Province",
+         "id": "Province:CA:9qdguu",
+         "abbr": "CA",
+         "name": "California"
+    }
+]

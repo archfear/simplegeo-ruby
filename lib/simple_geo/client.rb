@@ -197,7 +197,8 @@ module SimpleGeo
       end
 
       def get_contains(lat, lon)
-        get Endpoint.contains(lat, lon)
+        info = get Endpoint.contains(lat, lon)
+        HashUtils.recursively_symbolize_keys(info)
       end
 
       def get(endpoint, data=nil)
