@@ -49,7 +49,7 @@ module SimpleGeo
         :lat => json_hash['geometry']['coordinates'][1],
         :lon => json_hash['geometry']['coordinates'][0],
         :created => Time.at(json_hash['created']),
-        :properties => Record.recursively_symbolize_keys(json_hash['properties'])
+        :properties => HashUtils.recursively_symbolize_keys(json_hash['properties'])
       )
     end
     
@@ -62,20 +62,6 @@ module SimpleGeo
       end
       records
     end
-    
-    def self.recursively_symbolize_keys(object)
-      if object.is_a? Hash
-        symbolized_hash = object.symbolize_keys
-        symbolized_hash.each do |key, value|
-          symbolized_hash[key] = recursively_symbolize_keys(value)
-        end
-        symbolized_hash
-      elsif object.is_a? Array
-        object.map { |value| recursively_symbolize_keys(value) }
-      else
-        object
-      end
-    end
-  
+
   end
 end

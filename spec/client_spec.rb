@@ -472,19 +472,493 @@ describe "Client" do
   end
   
   context "getting layer information" do
+    context "for an existing layer" do
+      before do
+        stub_request :get,
+          'http://api.simplegeo.com/0.1/layer/io.path.testlayer.json',
+          :fixture_file => 'layer_info.json'
+      end
+      
+      it "should return a hash containing the layer information" do
+        layer_info = SimpleGeo::Client.get_layer_information('io.path.testlayer')
+        layer_info.should == {
+          :name => "io.path.testlayer",
+          :public => false,
+          :callback_urls => []
+        }
+      end
+    end
+    
+    context "for a nonexistant layer" do
+      before do
+        stub_request :get,
+          'http://api.simplegeo.com/0.1/layer/io.path.testlayer.json',
+          :status => 404
+      end
+      
+      it "should raise a NotFound exception" do
+        lambda {
+          SimpleGeo::Client.get_layer_information('io.path.testlayer')
+        }.should raise_exception(SimpleGeo::NotFound)
+      end
+    end
+  end
+  
+  context "getting SpotRank information for a day, hour and location" do
     before do
       stub_request :get,
-        'http://api.simplegeo.com/0.1/layer/io.path.testlayer.json',
-        :fixture_file => 'layer_info.json'
+        'http://api.simplegeo.com/0.1/density/sat/16/37.75965,-122.42608.json',
+        :fixture_file => 'get_density_by_hour.json'
     end
-
-    it "should return a hash containing the layer information" do
-      layer_info = SimpleGeo::Client.get_layer_information('io.path.testlayer')
-      layer_info.should == {
-        :name => "io.path.testlayer",
-        :public => false,
-        :callback_urls => []
+    
+    it "should return a hash containing the density information" do
+      density_info = SimpleGeo::Client.get_density(37.75965, -122.42608, 'sat', '16' )
+      density_info.should == {
+        :city_rank => 10,
+        :local_rank => 8,
+        :trending_rank => 0,
+        :dayname => "sat",
+        :hour => 16,
+        :worldwide_rank => 8,
+        :geometry => {
+          :type => "Polygon",
+          :coordinates => [
+            [ 37.7587890625, -122.4267578125 ],
+            [ 37.759765625, -122.4267578125 ],
+            [ 37.759765625, -122.42578125 ],
+            [ 37.7587890625, -122.42578125 ],
+            [ 37.7587890625, -122.4267578125 ]
+          ]
+        }
       }
+    end
+  end
+  
+  context "getting SpotRank information for a day and location" do
+    before do
+      stub_request :get,
+        'http://api.simplegeo.com/0.1/density/sat/37.75965,-122.42608.json',
+        :fixture_file => 'get_density_by_day.json'
+    end
+    
+    it "should return an array of hashes containing the density information" do
+      density_info = SimpleGeo::Client.get_density(37.75965, -122.42608, 'sat')
+      density_info.should == [
+        {
+          :geometry => {
+            :type => "Polygon",
+            :coordinates => [
+              [ 37.7587890625, -122.4267578125 ],
+              [ 37.759765625, -122.4267578125 ],
+              [ 37.759765625, -122.42578125 ],
+              [ 37.7587890625, -122.42578125 ],
+              [ 37.7587890625, -122.4267578125 ]
+            ]
+          }, 
+          :hour => 0, 
+          :trending_rank => 2, 
+          :local_rank => 4, 
+          :city_rank => 10, 
+          :worldwide_rank => 4, 
+          :dayname => "sat"
+        }, 
+        {
+          :geometry => {
+            :type => "Polygon",
+            :coordinates => [
+              [ 37.7587890625, -122.4267578125 ],
+              [ 37.759765625, -122.4267578125 ],
+              [ 37.759765625, -122.42578125 ],
+              [ 37.7587890625, -122.42578125 ],
+              [ 37.7587890625, -122.4267578125 ]
+            ]
+          }, 
+          :hour => 1, 
+          :trending_rank => -2, 
+          :local_rank => 6, 
+          :city_rank => 10, 
+          :worldwide_rank => 6, 
+          :dayname => "sat"
+        }, 
+        {
+          :geometry => {
+            :type => "Polygon",
+            :coordinates => [
+              [ 37.7587890625, -122.4267578125 ],
+              [ 37.759765625, -122.4267578125 ],
+              [ 37.759765625, -122.42578125 ],
+              [ 37.7587890625, -122.42578125 ],
+              [ 37.7587890625, -122.4267578125 ]
+            ]
+          }, 
+          :hour => 2, 
+          :trending_rank => 2, 
+          :local_rank => 2, 
+          :city_rank => 10, 
+          :worldwide_rank => 2, 
+          :dayname => "sat"
+        }, 
+        {
+          :geometry => {
+            :type => "Polygon",
+            :coordinates => [
+              [ 37.7587890625, -122.4267578125 ],
+              [ 37.759765625, -122.4267578125 ],
+              [ 37.759765625, -122.42578125 ],
+              [ 37.7587890625, -122.42578125 ],
+              [ 37.7587890625, -122.4267578125 ]
+            ]
+          }, 
+          :hour => 3, 
+          :trending_rank => -2, 
+          :local_rank => 6, 
+          :city_rank => 10, 
+          :worldwide_rank => 6, 
+          :dayname => "sat"
+        }, 
+        {
+          :geometry => {
+            :type => "Polygon",
+            :coordinates => [
+              [ 37.7587890625, -122.4267578125 ],
+              [ 37.759765625, -122.4267578125 ],
+              [ 37.759765625, -122.42578125 ],
+              [ 37.7587890625, -122.42578125 ],
+              [ 37.7587890625, -122.4267578125 ]
+            ]
+          }, 
+          :hour => 4, 
+          :trending_rank => -2, 
+          :local_rank => 4, 
+          :city_rank => 10, 
+          :worldwide_rank => 4, 
+          :dayname => "sat"
+        }, 
+        {
+           :geometry => {
+             :type => "Polygon",
+             :coordinates => [
+               [ 37.7587890625, -122.4267578125 ],
+               [ 37.759765625, -122.4267578125 ],
+               [ 37.759765625, -122.42578125 ],
+               [ 37.7587890625, -122.42578125 ],
+               [ 37.7587890625, -122.4267578125 ]
+             ]
+           }, 
+          :hour => 6, 
+          :trending_rank => 2, 
+          :local_rank => 2, 
+          :city_rank => 10, 
+          :worldwide_rank => 2, 
+          :dayname => "sat"
+        }, 
+        {
+          :geometry => {
+             :type => "Polygon",
+             :coordinates => [
+               [ 37.7587890625, -122.4267578125 ],
+               [ 37.759765625, -122.4267578125 ],
+               [ 37.759765625, -122.42578125 ],
+               [ 37.7587890625, -122.42578125 ],
+               [ 37.7587890625, -122.4267578125 ]
+             ]
+           }, 
+          :hour => 7, 
+          :trending_rank => 1, 
+          :local_rank => 5, 
+          :city_rank => 10, 
+          :worldwide_rank => 5, 
+          :dayname => "sat"
+        }, 
+        {
+           :geometry => {
+             :type => "Polygon",
+             :coordinates => [
+               [ 37.7587890625, -122.4267578125 ],
+               [ 37.759765625, -122.4267578125 ],
+               [ 37.759765625, -122.42578125 ],
+               [ 37.7587890625, -122.42578125 ],
+               [ 37.7587890625, -122.4267578125 ]
+             ]
+           }, 
+          :hour => 8, 
+          :trending_rank => 0, 
+          :local_rank => 6, 
+          :city_rank => 10, 
+          :worldwide_rank => 6, 
+          :dayname => "sat"
+        }, 
+        {
+           :geometry => {
+             :type => "Polygon",
+             :coordinates => [
+               [ 37.7587890625, -122.4267578125 ],
+               [ 37.759765625, -122.4267578125 ],
+               [ 37.759765625, -122.42578125 ],
+               [ 37.7587890625, -122.42578125 ],
+               [ 37.7587890625, -122.4267578125 ]
+             ]
+           }, 
+          :hour => 9, 
+          :trending_rank => 0, 
+          :local_rank => 6, 
+          :city_rank => 10, 
+          :worldwide_rank => 6, 
+          :dayname => "sat"
+        }, 
+        {
+           :geometry => {
+             :type => "Polygon",
+             :coordinates => [
+               [ 37.7587890625, -122.4267578125 ],
+               [ 37.759765625, -122.4267578125 ],
+               [ 37.759765625, -122.42578125 ],
+               [ 37.7587890625, -122.42578125 ],
+               [ 37.7587890625, -122.4267578125 ]
+             ]
+           }, 
+          :hour => 10, 
+          :trending_rank => 2, 
+          :local_rank => 6, 
+          :city_rank => 10, 
+          :worldwide_rank => 6, 
+          :dayname => "sat"
+        }, 
+        {
+          :geometry => {
+            :type => "Polygon",
+            :coordinates => [
+              [ 37.7587890625, -122.4267578125 ],
+              [ 37.759765625, -122.4267578125 ],
+              [ 37.759765625, -122.42578125 ],
+              [ 37.7587890625, -122.42578125 ],
+              [ 37.7587890625, -122.4267578125 ]
+            ]
+          }, 
+          :hour => 11, 
+          :trending_rank => -1, 
+          :local_rank => 8, 
+          :city_rank => 10, 
+          :worldwide_rank => 8, 
+          :dayname => "sat"
+        }, 
+        {
+           :geometry => {
+             :type => "Polygon",
+             :coordinates => [
+               [ 37.7587890625, -122.4267578125 ],
+               [ 37.759765625, -122.4267578125 ],
+               [ 37.759765625, -122.42578125 ],
+               [ 37.7587890625, -122.42578125 ],
+               [ 37.7587890625, -122.4267578125 ]
+             ]
+           }, 
+          :hour => 12, 
+          :trending_rank => 1, 
+          :local_rank => 7, 
+          :city_rank => 10, 
+          :worldwide_rank => 7, 
+          :dayname => "sat"
+        }, 
+        {
+           :geometry => {
+             :type => "Polygon",
+             :coordinates => [
+               [ 37.7587890625, -122.4267578125 ],
+               [ 37.759765625, -122.4267578125 ],
+               [ 37.759765625, -122.42578125 ],
+               [ 37.7587890625, -122.42578125 ],
+               [ 37.7587890625, -122.4267578125 ]
+             ]
+           }, 
+          :hour => 13, 
+          :trending_rank => 0, 
+          :local_rank => 8, 
+          :city_rank => 10, 
+          :worldwide_rank => 8, 
+          :dayname => "sat"
+        }, 
+        {
+           :geometry => {
+             :type => "Polygon",
+             :coordinates => [
+               [ 37.7587890625, -122.4267578125 ],
+               [ 37.759765625, -122.4267578125 ],
+               [ 37.759765625, -122.42578125 ],
+               [ 37.7587890625, -122.42578125 ],
+               [ 37.7587890625, -122.4267578125 ]
+             ]
+           }, 
+          :hour => 14, 
+          :trending_rank => 0, 
+          :local_rank => 8, 
+          :city_rank => 10, 
+          :worldwide_rank => 8, 
+          :dayname => "sat"
+        }, 
+        {
+           :geometry => {
+             :type => "Polygon",
+             :coordinates => [
+               [ 37.7587890625, -122.4267578125 ],
+               [ 37.759765625, -122.4267578125 ],
+               [ 37.759765625, -122.42578125 ],
+               [ 37.7587890625, -122.42578125 ],
+               [ 37.7587890625, -122.4267578125 ]
+             ]
+           }, 
+          :hour => 15, 
+          :trending_rank => 0, 
+          :local_rank => 8, 
+          :city_rank => 10, 
+          :worldwide_rank => 8, 
+          :dayname => "sat"
+        }, 
+        {
+           :geometry => {
+             :type => "Polygon",
+             :coordinates => [
+               [ 37.7587890625, -122.4267578125 ],
+               [ 37.759765625, -122.4267578125 ],
+               [ 37.759765625, -122.42578125 ],
+               [ 37.7587890625, -122.42578125 ],
+               [ 37.7587890625, -122.4267578125 ]
+             ]
+           }, 
+          :hour => 16, 
+          :trending_rank => 0, 
+          :local_rank => 8, 
+          :city_rank => 10, 
+          :worldwide_rank => 8, 
+          :dayname => "sat"
+        }, 
+        {
+           :geometry => {
+             :type => "Polygon",
+             :coordinates => [
+               [ 37.7587890625, -122.4267578125 ],
+               [ 37.759765625, -122.4267578125 ],
+               [ 37.759765625, -122.42578125 ],
+               [ 37.7587890625, -122.42578125 ],
+               [ 37.7587890625, -122.4267578125 ]
+             ]
+           }, 
+          :hour => 17, 
+          :trending_rank => 0, 
+          :local_rank => 8, 
+          :city_rank => 10, 
+          :worldwide_rank => 8, 
+          :dayname => "sat"
+        }, 
+        {
+           :geometry => {
+             :type => "Polygon",
+             :coordinates => [
+               [ 37.7587890625, -122.4267578125 ],
+               [ 37.759765625, -122.4267578125 ],
+               [ 37.759765625, -122.42578125 ],
+               [ 37.7587890625, -122.42578125 ],
+               [ 37.7587890625, -122.4267578125 ]
+             ]
+           }, 
+          :hour => 18, 
+          :trending_rank => 0, 
+          :local_rank => 8, 
+          :city_rank => 10, 
+          :worldwide_rank => 8, 
+          :dayname => "sat"
+        }, 
+        {
+           :geometry => {
+             :type => "Polygon",
+             :coordinates => [
+               [ 37.7587890625, -122.4267578125 ],
+               [ 37.759765625, -122.4267578125 ],
+               [ 37.759765625, -122.42578125 ],
+               [ 37.7587890625, -122.42578125 ],
+               [ 37.7587890625, -122.4267578125 ]
+             ]
+           }, 
+          :hour => 19, 
+          :trending_rank => 0, 
+          :local_rank => 8, 
+          :city_rank => 10, 
+          :worldwide_rank => 8, 
+          :dayname => "sat"
+        }, 
+        {
+           :geometry => {
+             :type => "Polygon",
+             :coordinates => [
+               [ 37.7587890625, -122.4267578125 ],
+               [ 37.759765625, -122.4267578125 ],
+               [ 37.759765625, -122.42578125 ],
+               [ 37.7587890625, -122.42578125 ],
+               [ 37.7587890625, -122.4267578125 ]
+             ]
+           }, 
+          :hour => 20, 
+          :trending_rank => 0, 
+          :local_rank => 8, 
+          :city_rank => 10, 
+          :worldwide_rank => 8, 
+          :dayname => "sat"
+        }, 
+        {
+           :geometry => {
+             :type => "Polygon",
+             :coordinates => [
+               [ 37.7587890625, -122.4267578125 ],
+               [ 37.759765625, -122.4267578125 ],
+               [ 37.759765625, -122.42578125 ],
+               [ 37.7587890625, -122.42578125 ],
+               [ 37.7587890625, -122.4267578125 ]
+             ]
+           }, 
+          :hour => 21, 
+          :trending_rank => -2, 
+          :local_rank => 8, 
+          :city_rank => 10, 
+          :worldwide_rank => 8, 
+          :dayname => "sat"
+        }, 
+        {
+           :geometry => {
+             :type => "Polygon",
+             :coordinates => [
+               [ 37.7587890625, -122.4267578125 ],
+               [ 37.759765625, -122.4267578125 ],
+               [ 37.759765625, -122.42578125 ],
+               [ 37.7587890625, -122.42578125 ],
+               [ 37.7587890625, -122.4267578125 ]
+             ]
+           }, 
+          :hour => 22, 
+          :trending_rank => 0, 
+          :local_rank => 5, 
+          :city_rank => 10, 
+          :worldwide_rank => 6, 
+          :dayname => "sat"
+        }, 
+        {
+          :geometry => {
+             :type => "Polygon",
+             :coordinates => [
+               [ 37.7587890625, -122.4267578125 ],
+               [ 37.759765625, -122.4267578125 ],
+               [ 37.759765625, -122.42578125 ],
+               [ 37.7587890625, -122.42578125 ],
+               [ 37.7587890625, -122.4267578125 ]
+             ]
+           }, 
+          :hour => 23, 
+          :trending_rank => 1, 
+          :local_rank => 5, 
+          :city_rank => 10, 
+          :worldwide_rank => 5, 
+          :dayname => "sat"
+        }
+      ]
     end
   end
   

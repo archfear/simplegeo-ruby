@@ -2,7 +2,7 @@ require 'uri'
 require 'json'
 require 'oauth'
 
-require 'simple_geo/core_extensions'
+require 'simple_geo/hash_utils'
 require 'simple_geo/connection'
 require 'simple_geo/client'
 require 'simple_geo/record'

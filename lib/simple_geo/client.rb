@@ -164,17 +164,28 @@ module SimpleGeo
       
       def get_nearby_address(lat, lon)
         geojson_hash = get Endpoint.nearby_address(lat, lon)
-        geojson_hash['properties'].symbolize_keys
+        HashUtils.symbolize_keys geojson_hash['properties']
       end
       
       def get_layer_information(layer)
         layer_info = get Endpoint.layer(layer)
         layer_info.delete('selfLink')
-        layer_info.symbolize_keys
+        HashUtils.symbolize_keys(layer_info)
       end
       
       def get_density(lat, lon, day, hour=nil)
-        get Endpoint.density(lat, lon, day, hour)
+        geojson_hash = get Endpoint.density(lat, lon, day, hour)
+        geojson_hash = HashUtils.recursively_symbolize_keys(geojson_hash)
+        if hour.nil?
+          density_info = []
+          geojson_hash[:features].each do |hour_geojson_hash|
+            density_info << hour_geojson_hash[:properties].merge(
+              {:geometry => hour_geojson_hash[:geometry]})
+          end
+          density_info
+        else
+          geojson_hash[:properties].merge({:geometry => geojson_hash[:geometry]})
+        end
       end
 
       def get_overlaps(south, west, north, east, options)
