@@ -109,18 +109,25 @@ module SimpleGeo
       def get_records(layer, ids)
         features_hash = get Endpoint.records(layer, ids)
         features = []
-        if features_hash['features']
-          features_hash['features'].each do |feature_hash|
-            record = Record.parse_geojson_hash(feature_hash)
-            record.layer = layer
-            features << record
-          end
+        features_hash['features'].each do |feature_hash|
+          record = Record.parse_geojson_hash(feature_hash)
+          record.layer = layer
+          features << record
         end
         features
       end
 
-      def get_history(layer, id, options={})
-        get Endpoint.history(layer, id), options
+      def get_history(layer, id)
+        history_geojson = get Endpoint.history(layer, id)
+        history = []
+        history_geojson['geometries'].each do |point|
+          history << {
+            :created => Time.at(point['created']),
+            :lat => point['coordinates'][1],
+            :lon => point['coordinates'][0]
+          }
+        end
+        history
       end
       
       #TODO: get nearby by lat, lon 

@@ -330,4 +330,22 @@ describe "Client" do
     end
   end
 
+  context "getting a record's history" do
+    before do
+      stub_request :get,
+        'http://api.simplegeo.com/0.1/records/com.simplegeo.global.geonames/5373629/history.json',
+        :fixture_file => 'get_history.json', :status => 200
+    end
+
+    it "should create or update the record" do
+      history = SimpleGeo::Client.get_history('com.simplegeo.global.geonames', '5373629')
+      history.should == [
+        { 
+          :created => Time.at(1269832510),
+          :lat => 37.759650000000001,
+          :lon => -122.42608
+        }
+      ]
+    end
+  end
 end
