@@ -38,6 +38,10 @@ module SimpleGeo
       self.to_hash.to_json
     end
     
+    def ==(other)
+      other.class == self.class && self.to_hash == other.to_hash
+    end
+    
     def self.parse_geojson_hash(json_hash)
       Record.new(
         :id => json_hash['id'],
@@ -47,6 +51,16 @@ module SimpleGeo
         :created => Time.at(json_hash['created']),
         :properties => Record.recursively_symbolize_keys(json_hash['properties'])
       )
+    end
+    
+    def self.parse_features_hash(layer, features_hash)
+      records = []
+      features_hash['features'].each do |feature_hash|
+        record = Record.parse_geojson_hash(feature_hash)
+        record.layer = layer
+        records << record
+      end
+      records
     end
     
     def self.recursively_symbolize_keys(object)

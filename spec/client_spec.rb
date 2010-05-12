@@ -348,4 +348,104 @@ describe "Client" do
       ]
     end
   end
+  
+  context "getting nearby records" do
+    before do      
+      @expected_records = {
+        :next_cursor => "QVSEifz7gri4J0w8FSQJ06Z5S5lOw6gZ75Co-fBbBQJEr7XMqN32bjMKNc9kwLKqKyqtVvxR_t5hgWW6XDgPnPTY",
+        :records => [
+          {
+            :distance => 0,
+            :record => SimpleGeo::Record.new(
+              :id => "5373629",
+              :lon => -122.42608,
+              :lat => 37.75965,
+              :type => "place",
+              :layer => "com.simplegeo.global.geonames",
+              :created => Time.at(1269832510),
+              :properties => {
+                :admin4 => "",
+                :feature_code => "PRK",
+                :feature_class => "L",
+                :last_modified => "2006-01-15",
+                :asciiname => "Mission Dolores Park",
+                :cc2 => "",
+                :country_code => "US",
+                :admin1 => "CA",
+                :alternatenames => "",
+                :admin3 => "",
+                :elevation => "22",
+                :layer => "com.simplegeo.global.geonames",
+                :timezone => "America/Los_Angeles",
+                :name => "Mission Dolores Park",
+                :gtopo30 => "60",
+                :admin2 => "075",
+                :population => "0"
+              }
+            )
+          },
+          {
+            :distance => 57.557068918956581,
+            :record => SimpleGeo::Record.new(
+              :id => "5352852",
+              :lon => -122.42553,
+              :lat => 37.75937,
+              :type => "place",
+              :layer => "com.simplegeo.global.geonames",
+              :created => Time.at(1269832039),
+              :properties => {
+                :admin4 => "",
+                :feature_code => "CH",
+                :feature_class => "S",
+                :last_modified => "2006-01-15",
+                :asciiname => "Golden Gate Lutheran Church",
+                :cc2 => "",
+                :country_code => "US",
+                :admin1 => "CA",
+                :alternatenames => "",
+                :admin3 => "",
+                :elevation => "23",
+                :layer => "com.simplegeo.global.geonames",
+                :timezone => "America/Los_Angeles",
+                :name=> "Golden Gate Lutheran Church",
+                :gtopo30 => "60",
+                :admin2 => "075",
+                :population => "0"
+              }
+            )
+          }
+        ]
+      }
+    end
+    
+    context "by lat and lon" do
+      before do
+        stub_request :get,
+          'http://api.simplegeo.com/0.1/records/com.simplegeo.global.geonames/nearby/37.75965,-122.42608.json',
+          :fixture_file => 'get_nearby.json'
+      end
+      
+      it "should return a hash of nearby records" do
+        records = SimpleGeo::Client.get_nearby_records('com.simplegeo.global.geonames', 
+          :lat => 37.759650000000001,
+          :lon => -122.42608)
+        records.should == @expected_records
+      end
+    end
+    
+    context "by geohash" do
+      before do
+        stub_request :get,
+          'http://api.simplegeo.com/0.1/records/com.simplegeo.global.geonames/nearby/9q8yy1ujcsfm.json',
+          :fixture_file => 'get_nearby.json'
+      end
+      
+      it "should return a hash of nearby records" do
+        records = SimpleGeo::Client.get_nearby_records('com.simplegeo.global.geonames', 
+          :geohash => '9q8yy1ujcsfm')
+        records.should == @expected_records
+      end
+    end
+  end
+  
 end

@@ -28,8 +28,6 @@ module SimpleGeo
     private
     
       def request(method, endpoint, data)
-        data = data.to_json  unless data.nil?
-    
         headers = {'User-Agent' => "SimpleGeo Ruby Client v#{VERSION}"}
 
         if [:get, :delete].include?(method) && !data.nil?
@@ -42,7 +40,7 @@ module SimpleGeo
           headers.each do |key, value|
             puts "#{key}=#{value}"
           end
-          if data
+          if [:post, :put].include?(method) && !data.nil?
             puts "data:"
             puts data.to_json
           end
@@ -52,6 +50,7 @@ module SimpleGeo
           when :get, :delete
             response = @access_token.request(method, endpoint, headers)
           when :post, :put
+            data = data.to_json  unless data.nil?
             response = @access_token.request(method, endpoint, data, headers)
         end
 

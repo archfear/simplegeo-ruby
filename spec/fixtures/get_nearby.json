@@ -1,0 +1,84 @@
+{
+    "next_cursor": "QVSEifz7gri4J0w8FSQJ06Z5S5lOw6gZ75Co-fBbBQJEr7XMqN32bjMKNc9kwLKqKyqtVvxR_t5hgWW6XDgPnPTY", 
+    "type": "FeatureCollection", 
+    "features": [
+        {
+            "distance": 0, 
+            "created": 1269832510, 
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    -122.42608, 
+                    37.759650000000001
+                ]
+            }, 
+            "id": "5373629", 
+            "layerLink": {
+                "href": "http://api.simplegeo.com/0.1/layer/com.simplegeo.global.geonames.json"
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "layer": "com.simplegeo.global.geonames", 
+                "elevation": "22", 
+                "gtopo30": "60", 
+                "feature_code": "PRK", 
+                "last_modified": "2006-01-15", 
+                "country_code": "US", 
+                "alternatenames": "", 
+                "timezone": "America/Los_Angeles", 
+                "population": "0", 
+                "name": "Mission Dolores Park", 
+                "feature_class": "L", 
+                "cc2": "", 
+                "admin1": "CA", 
+                "admin3": "", 
+                "admin2": "075", 
+                "admin4": "", 
+                "asciiname": "Mission Dolores Park", 
+                "type": "place"
+            }, 
+            "selfLink": {
+                "href": "http://api.simplegeo.com/0.1/records/com.simplegeo.global.geonames/5373629.json"
+            }
+        }, 
+        {
+            "distance": 57.557068918956581, 
+            "created": 1269832039, 
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    -122.42552999999999, 
+                    37.759369999999997
+                ]
+            }, 
+            "id": "5352852", 
+            "layerLink": {
+                "href": "http://api.simplegeo.com/0.1/layer/com.simplegeo.global.geonames.json"
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "layer": "com.simplegeo.global.geonames", 
+                "elevation": "23", 
+                "gtopo30": "60", 
+                "feature_code": "CH", 
+                "last_modified": "2006-01-15", 
+                "country_code": "US", 
+                "alternatenames": "", 
+                "timezone": "America/Los_Angeles", 
+                "population": "0", 
+                "name": "Golden Gate Lutheran Church", 
+                "feature_class": "S", 
+                "cc2": "", 
+                "admin1": "CA", 
+                "admin3": "", 
+                "admin2": "075", 
+                "admin4": "", 
+                "asciiname": "Golden Gate Lutheran Church", 
+                "type": "place"
+            }, 
+            "selfLink": {
+                "href": "http://api.simplegeo.com/0.1/records/com.simplegeo.global.geonames/5352852.json"
+            }
+        }
+    ]
+}

@@ -20,8 +20,12 @@ module SimpleGeo
         endpoint_url "records/#{layer}/#{id}/history.json"
       end
     
-      def nearby(layer, geohash)
+      def nearby_geohash(layer, geohash)
         endpoint_url "records/#{layer}/nearby/#{geohash}.json"
+      end
+      
+      def nearby_coordinates(layer, lat, lon)
+        endpoint_url "records/#{layer}/nearby/#{lat},#{lon}.json"
       end
     
       def nearby_address(lat, lon)
@@ -108,13 +112,13 @@ module SimpleGeo
       # This request currently generates a 500 error if an unknown id is passed in.
       def get_records(layer, ids)
         features_hash = get Endpoint.records(layer, ids)
-        features = []
+        records = []
         features_hash['features'].each do |feature_hash|
           record = Record.parse_geojson_hash(feature_hash)
           record.layer = layer
-          features << record
+          records << record
         end
-        features
+        records
       end
 
       def get_history(layer, id)
@@ -130,10 +134,32 @@ module SimpleGeo
         history
       end
       
-      #TODO: get nearby by lat, lon 
-      # api.simplegeo.com/{version}/records/{layer}/nearby/{lat},{lon}.json
-      def get_nearby(layer, geohash, options={})
-        get Endpoint.nearby(layer, geohash), options
+      def get_nearby_records(layer, options)
+        if options[:geohash]
+          endpoint = Endpoint.nearby_geohash(layer, options.delete(:geohash))
+        elsif options[:lat] && options[:lon]
+          endpoint = Endpoint.nearby_coordinates(layer, 
+            options.delete(:lat), options.delete(:lon))
+        else
+          raise SimpleGeoError, "Either geohash or lat and lon is required"
+        end
+        
+        options = nil  if options.empty?
+        features_hash = get(endpoint, options)
+        nearby_records = {
+          :next_cursor => features_hash['next_cursor'],
+          :records => []
+        }
+        features_hash['features'].each do |feature_hash|
+          record = Record.parse_geojson_hash(feature_hash)
+          record.layer = layer
+          record_info = {
+            :distance => feature_hash['distance'],
+            :record => record
+          }
+          nearby_records[:records] << record_info
+        end
+        nearby_records
       end
       
       def get_nearby_address(lat, lon)
