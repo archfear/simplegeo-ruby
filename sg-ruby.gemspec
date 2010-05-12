@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
      "lib/simple_geo/hash_utils.rb",
      "lib/simple_geo/record.rb",
      "lib/simplegeo.rb",
+     "sg-ruby.gemspec",
      "spec/client_spec.rb",
      "spec/fixtures/contains.json",
      "spec/fixtures/get_density_by_day.json",
