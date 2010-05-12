@@ -448,7 +448,7 @@ describe "Client" do
     end
   end
   
-  context "getting nearby addresses" do
+  context "getting a nearby address" do
     before do
       stub_request :get,
         'http://api.simplegeo.com/0.1/nearby/address/37.75965,-122.42608.json',
@@ -456,8 +456,8 @@ describe "Client" do
     end
 
     it "should return a hash with the address information" do
-      nearby_addresses = SimpleGeo::Client.get_nearby_address(37.759650000000001, -122.42608)
-      nearby_addresses.should == { 
+      nearby_address = SimpleGeo::Client.get_nearby_address(37.759650000000001, -122.42608)
+      nearby_address.should == { 
         :state_name => "California", 
         :street_number => "580", 
         :country => "US", 
