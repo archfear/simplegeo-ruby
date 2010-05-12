@@ -1,6 +1,109 @@
 = sg-ruby
 
-Description goes here.
+A SimpleGeo Ruby client.
+
+For the specific documentation on APIs (and the full list of parameters) see:
+
+http://help.simplegeo.com/faqs/api-documentation/endpoints
+
+== Examples
+
+Start by requiring SimpleGeo and setting your authentication credentials:
+
+  require 'simplegeo'
+  SimpleGeo::Client.set_credentials('token', 'secret')
+  
+=== Getting a record
+
+  record = SimpleGeo::Client.get_record('com.simplegeo.global.geonames', '5373629')
+
+=== Getting multiple records
+
+  records = SimpleGeo::Client.get_records('com.simplegeo.global.geonames', ['1234', '5678'])
+
+=== Adding a record
+
+  record = SimpleGeo::Record.new({
+    :id => '1234',
+    :created => 1269832510,
+    :lat => 37.759650000000001,
+    :lon => -122.42608,
+    :layer => 'com.example.testlayer',
+    :properties => {
+      :test_property => 'foobar'
+    }
+  })
+  SimpleGeo::Client.add_record(record)
+
+=== Updating a record
+  
+  record = SimpleGeo::Client.get_record('com.example.testlayer', '1234')
+  record.lat = 40.714269
+  record.lon = -74.005973
+  SimpleGeo::Client.add_record(record)
+
+=== Adding / updating multiple records
+
+  records = [
+    SimpleGeo::Record.new({
+      :id => '1234',
+      :created => 1269832510,
+      :lat => 37.759650000000001,
+      :lon => -122.42608,
+      :layer => 'com.example.testlayer',
+      :properties => {
+        :test_property => 'foobar'
+      }
+    }),
+    SimpleGeo::Record.new({
+      :id => '5678',
+      :created => 1269832510,
+      :lat => 37.755470000000003,
+      :lon => -122.420646,
+      :layer => 'com.example.testlayer',
+      :properties => {
+        :mad_prop => 'baz'
+      }
+    })
+  ]
+  SimpleGeo::Client.add_records('com.example.testlayer', records)
+
+=== Deleting a record
+
+  SimpleGeo::Client.delete_record('1234')
+
+=== Getting a record's history
+
+  history = SimpleGeo::Client.get_history('com.example.testlayer', '1234')
+
+=== Getting nearby records
+
+  See http://help.simplegeo.com/faqs/api-documentation/endpoints for other optional params
+
+  # by lat, lon
+  records = SimpleGeo::Client.get_nearby_records('com.example.testlayer', 
+    :lat => 37.759650000000001,
+    :lon => -122.42608)
+    
+  # by geohash
+  records = SimpleGeo::Client.get_nearby_records('com.example.testlayer', 
+    :geohash => '9q8yy1ujcsfm')
+
+=== Getting a nearby address for a lat and lon
+
+  nearby_address = SimpleGeo::Client.get_nearby_address(37.759650000000001, -122.42608)
+  
+=== Getting SpotRank density information
+
+  # by day
+  density_info = SimpleGeo::Client.get_density(37.75965, -122.42608, 'sat')
+  
+  # by hour
+  density_info = SimpleGeo::Client.get_density(37.75965, -122.42608, 'sat', '16' )
+
+=== Other APIs
+
+  For more examples see: spec/client_spec.rb 
 
 == Note on Patches/Pull Requests
  
