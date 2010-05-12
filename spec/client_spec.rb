@@ -1093,4 +1093,57 @@ describe "Client" do
     end
   end
   
+  context "getting overlaps info for a set of coordinates" do
+    before do
+      stub_request :get,
+        'http://api.simplegeo.com/0.1/overlaps/32.528832,-124.482003,42.009517,-114.131211.json',
+        :fixture_file => 'overlaps.json'
+    end
+    
+    it "should return a hash with the correct info" do
+      info = SimpleGeo::Client.get_overlaps(32.528832000000001, -124.48200299999999, 
+        42.009516999999995, -114.13121099999999)
+      info.should == [
+        {
+          :bounds => 
+          [
+            -122.998802,
+             42.002634,
+             -122.597843,
+             42.266379000000001
+          ],
+           :type => "Census Tract",
+           :id => "Census_Tract:41029002300:9r2xt4",
+           :abbr => "",
+           :name => "41029002300"
+        },
+        {
+          :bounds => 
+          [
+            -123.858086,
+             41.995095999999997,
+             -123.22998200000001,
+             42.272435999999999
+          ],
+           :type => "Census Tract",
+           :id => "Census_Tract:41033361600:9r2psc",
+           :abbr => "",
+           :name => "41033361600"
+        },
+        {
+          :bounds => 
+          [
+            -123.231629,
+             42.003022000000001,
+             -122.907515,
+             42.433349
+          ],
+           :type => "Census Tract",
+           :id => "Census_Tract:41029003002:9r2ryf",
+           :abbr => "",
+           :name => "41029003002"
+        }
+      ]
+    end
+  end
 end

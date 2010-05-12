@@ -188,8 +188,9 @@ module SimpleGeo
         end
       end
 
-      def get_overlaps(south, west, north, east, options)
-        get Endpoint.overlaps(south, west, north, east), options
+      def get_overlaps(south, west, north, east, options=nil)
+        info = get Endpoint.overlaps(south, west, north, east), options
+        HashUtils.recursively_symbolize_keys(info)
       end
 
       def get_boundary(id)
