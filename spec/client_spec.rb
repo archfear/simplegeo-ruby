@@ -334,7 +334,7 @@ describe "Client" do
     before do
       stub_request :get,
         'http://api.simplegeo.com/0.1/records/com.simplegeo.global.geonames/5373629/history.json',
-        :fixture_file => 'get_history.json', :status => 200
+        :fixture_file => 'get_history.json'
     end
 
     it "should create or update the record" do
@@ -445,6 +445,29 @@ describe "Client" do
           :geohash => '9q8yy1ujcsfm')
         records.should == @expected_records
       end
+    end
+  end
+  
+  context "getting nearby addresses" do
+    before do
+      stub_request :get,
+        'http://api.simplegeo.com/0.1/nearby/address/37.75965,-122.42608.json',
+        :fixture_file => 'nearby_address.json'
+    end
+
+    it "should create or update the record" do
+      nearby_addresses = SimpleGeo::Client.get_nearby_address(37.759650000000001, -122.42608)
+      nearby_addresses.should == { 
+        :state_name => "California", 
+        :street_number => "580", 
+        :country => "US", 
+        :street => "Dolores St", 
+        :postal_code => "", 
+        :county_name => "San Francisco", 
+        :county_code => "075", 
+        :state_code => "CA", 
+        :place_name => "San Francisco"
+      }
     end
   end
   

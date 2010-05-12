@@ -163,7 +163,8 @@ module SimpleGeo
       end
       
       def get_nearby_address(lat, lon)
-        get Endpoint.nearby_address(lat, lon)
+        geojson_hash = get Endpoint.nearby_address(lat, lon)
+        geojson_hash['properties'].symbolize_keys
       end
       
       def get_layer_information(layer)
