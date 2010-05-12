@@ -193,8 +193,10 @@ module SimpleGeo
         HashUtils.recursively_symbolize_keys(info)
       end
 
+      # this API call seems to always return a 404
       def get_boundary(id)
-        get Endpoint.boundary(id)
+        info = get Endpoint.boundary(id)
+        HashUtils.recursively_symbolize_keys(info)
       end
 
       def get_contains(lat, lon)

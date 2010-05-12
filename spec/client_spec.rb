@@ -1146,4 +1146,20 @@ describe "Client" do
       ]
     end
   end
+  
+  # this API call seems to always return a 404
+  # context "getting boundary info by id" do
+  #   before do
+  #     stub_request :get,
+  #       'http://api.simplegeo.com/0.1/boundary/Neighborhood:Mission_Dolores:9q8yy4.json',
+  #       :fixture_file => 'boundary.json'
+  #   end
+  #   
+  #   it "should return a hash with the correct info" do
+  #     info = SimpleGeo::Client.get_boundary("Neighborhood:Mission_Dolores:9q8yy4")
+  #     info.should == [
+  # 
+  #     ]
+  #   end
+  # end
 end
