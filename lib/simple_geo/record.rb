@@ -38,16 +38,30 @@ module SimpleGeo
       self.to_hash.to_json
     end
     
-    def self.parse_json(json_hash)
+    def self.parse_geojson_hash(json_hash)
       Record.new(
         :id => json_hash['id'],
-        :layer => json_hash['properties'].delete('layer'),
         :type => json_hash['properties'].delete('type'),
         :lat => json_hash['geometry']['coordinates'][1],
         :lon => json_hash['geometry']['coordinates'][0],
         :created => Time.at(json_hash['created']),
-        :properties => json_hash['properties'].symbolize_keys
+        :properties => Record.recursively_symbolize_keys(json_hash['properties'])
       )
     end
+    
+    def self.recursively_symbolize_keys(object)
+      if object.is_a? Hash
+        symbolized_hash = object.symbolize_keys
+        symbolized_hash.each do |key, value|
+          symbolized_hash[key] = recursively_symbolize_keys(value)
+        end
+        symbolized_hash
+      elsif object.is_a? Array
+        object.map { |value| recursively_symbolize_keys(value) }
+      else
+        object
+      end
+    end
+  
   end
 end

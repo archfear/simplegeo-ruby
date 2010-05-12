@@ -92,7 +92,9 @@ module SimpleGeo
 
       def get_record(layer, id)
         record_hash = get Endpoint.record(layer, id)
-        Record.parse_json(record_hash)
+        record = Record.parse_geojson_hash(record_hash)
+        record.layer = layer
+        record
       end
 
       def add_records(layer, records)
@@ -103,9 +105,18 @@ module SimpleGeo
         post Endpoint.add_records(layer), "POST", features
       end
     
+      # This request currently generates a 500 error if an unknown id is passed in.
       def get_records(layer, ids)
-        features = get Endpoint.records(layer, ids)
-        features['features'] || []
+        features_hash = get Endpoint.records(layer, ids)
+        features = []
+        if features_hash['features']
+          features_hash['features'].each do |feature_hash|
+            record = Record.parse_geojson_hash(feature_hash)
+            record.layer = layer
+            features << record
+          end
+        end
+        features
       end
 
       def get_history(layer, id, options={})

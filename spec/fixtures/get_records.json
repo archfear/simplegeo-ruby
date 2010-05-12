@@ -1,0 +1,197 @@
+{
+    "type": "FeatureCollection", 
+    "features": [
+        {
+            "created": 1271985142, 
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    -122.419043, 
+                    37.760350000000003
+                ]
+            }, 
+            "id": "41530629", 
+            "layerLink": {
+                "href": "http://api.simplegeo.com/0.1/layer/com.simplegeo.us.business.json"
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "carrier_route": "C036", 
+                "pubdate": "2009-12-01", 
+                "ll_match_level": "R", 
+                "street_name": "Mission", 
+                "std_name": "Beauty Bar", 
+                "val_flag": "C", 
+                "census_block_id": "002", 
+                "company_headings": [
+                    {
+                        "normalized_id": "138001000", 
+                        "condensed_name": "BARS GRILLS & PUBS", 
+                        "condensed_id": "138001000", 
+                        "normalized_name": "BARS GRILLS & PUBS", 
+                        "category_id": "138000000", 
+                        "category_name": "Bars, Taverns & Cocktail Lounges"
+                    }
+                ], 
+                "company_sics": [
+                    {
+                        "sic_4": "7231", 
+                        "relevancy": "1", 
+                        "description": "BEAUTY SHOPS", 
+                        "naics": "812112", 
+                        "sic": "72310000", 
+                        "industry_class": "7", 
+                        "sic_4_description": "BEAUTY SHOPS", 
+                        "naics_description": "BEAUTY SALONS"
+                    }, 
+                    {
+                        "sic_4": "5813", 
+                        "relevancy": "2", 
+                        "description": "BAR (DRINKING PLACES)", 
+                        "naics": "72241", 
+                        "sic": "58130101", 
+                        "industry_class": "5", 
+                        "sic_4_description": "DRINKING PLACES", 
+                        "naics_description": "DRINKING PLACES (ALCOHOLIC BEVERAGES)"
+                    }, 
+                    {
+                        "sic_4": "5812", 
+                        "relevancy": "3", 
+                        "description": "GRILLS, ( EATING PLACES)", 
+                        "naics": "722211", 
+                        "sic": "58120310", 
+                        "industry_class": "5", 
+                        "sic_4_description": "EATING PLACES", 
+                        "naics_description": "LIMITED-SERVICE RESTAURANTS"
+                    }
+                ], 
+                "city": "San Francisco", 
+                "county_fips": "075", 
+                "zip": "94110", 
+                "mlsc": "4", 
+                "dso": "1", 
+                "state": "CA", 
+                "dpv_confirm": "Y", 
+                "exppubcity": "San Francisco", 
+                "housenumber": "2299", 
+                "msa": "7360", 
+                "phone_number": "0323", 
+                "exchange": "285", 
+                "area_code": "415", 
+                "censustract": "020800", 
+                "state_fips": "06", 
+                "street_type": "St", 
+                "business_name": "Beauty Bar", 
+                "plus4": "1811", 
+                "val_date": "2010-03-22", 
+                "type": "place", 
+                "confidence_score": "100", 
+                "time_zone": "4", 
+                "cbsa": "41860", 
+                "dpc": "996", 
+                "company_phones": [
+                    {
+                        "phone_number": "0323", 
+                        "phone_type": "P", 
+                        "val_date": "2010-03-22", 
+                        "dnc": "", 
+                        "exchange": "285", 
+                        "areacode": "415", 
+                        "val_flag": "C"
+                    }
+                ], 
+                "census_block_group": "2", 
+                "z4_type": "S"
+            }, 
+            "selfLink": {
+                "href": "http://api.simplegeo.com/0.1/records/com.simplegeo.us.business/41530629.json"
+            }
+        }, 
+        {
+            "created": 1271985146, 
+            "geometry": {
+                "type": "Point", 
+                "coordinates": [
+                    -122.420646, 
+                    37.755470000000003
+                ]
+            }, 
+            "id": "41531696", 
+            "layerLink": {
+                "href": "http://api.simplegeo.com/0.1/layer/com.simplegeo.us.business.json"
+            }, 
+            "type": "Feature", 
+            "properties": {
+                "carrier_route": "C010", 
+                "pubdate": "2009-12-01", 
+                "ll_match_level": "R", 
+                "street_name": "22nd", 
+                "std_name": "Latin American Club", 
+                "val_flag": "C", 
+                "census_block_id": "004", 
+                "company_headings": [
+                    {
+                        "normalized_id": "138004000", 
+                        "condensed_name": "NIGHT CLUBS", 
+                        "condensed_id": "138004000", 
+                        "normalized_name": "NIGHT CLUBS", 
+                        "category_id": "138000000", 
+                        "category_name": "Bars, Taverns & Cocktail Lounges"
+                    }
+                ], 
+                "company_sics": [
+                    {
+                        "sic_4": "5813", 
+                        "relevancy": "1", 
+                        "description": "NIGHT CLUBS", 
+                        "naics": "72241", 
+                        "sic": "58130200", 
+                        "industry_class": "5", 
+                        "sic_4_description": "DRINKING PLACES", 
+                        "naics_description": "DRINKING PLACES (ALCOHOLIC BEVERAGES)"
+                    }
+                ], 
+                "city": "San Francisco", 
+                "county_fips": "075", 
+                "zip": "94110", 
+                "mlsc": "4", 
+                "dso": "1", 
+                "state": "CA", 
+                "dpv_confirm": "Y", 
+                "housenumber": "3286", 
+                "msa": "7360", 
+                "phone_number": "2732", 
+                "exchange": "647", 
+                "area_code": "415", 
+                "censustract": "020800", 
+                "state_fips": "06", 
+                "street_type": "St", 
+                "business_name": "Latin American Club", 
+                "plus4": "3033", 
+                "val_date": "2010-03-22", 
+                "dnc": "T", 
+                "type": "place", 
+                "confidence_score": "100", 
+                "time_zone": "4", 
+                "cbsa": "41860", 
+                "dpc": "862", 
+                "company_phones": [
+                    {
+                        "phone_number": "2732", 
+                        "phone_type": "P", 
+                        "val_date": "2010-03-22", 
+                        "dnc": "T", 
+                        "exchange": "647", 
+                        "areacode": "415", 
+                        "val_flag": "C"
+                    }
+                ], 
+                "census_block_group": "4", 
+                "z4_type": "S"
+            }, 
+            "selfLink": {
+                "href": "http://api.simplegeo.com/0.1/records/com.simplegeo.us.business/41531696.json"
+            }
+        }
+    ]
+}
