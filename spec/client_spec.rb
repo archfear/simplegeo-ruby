@@ -71,7 +71,7 @@ describe "Client" do
       lambda {
         record = SimpleGeo::Record.new({
           :id => '1234',
-          :created => 1269832510,
+          :created => Time.at(1269832510),
           :lat => 37.759650000000001,
           :lon => -122.42608,
           :layer => 'io.path.testlayer',
@@ -306,7 +306,7 @@ describe "Client" do
         records = [
           SimpleGeo::Record.new({
             :id => '1234',
-            :created => 1269832510,
+            :created => Time.at(1269832510),
             :lat => 37.759650000000001,
             :lon => -122.42608,
             :layer => layer,
@@ -316,7 +316,7 @@ describe "Client" do
           }),
           SimpleGeo::Record.new({
             :id => '5678',
-            :created => 1269832510,
+            :created => Time.at(1269832510),
             :lat => 37.755470000000003,
             :lon => -122.420646,
             :layer => layer,

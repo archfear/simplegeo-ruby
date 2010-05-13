@@ -25,7 +25,7 @@ Start by requiring SimpleGeo and setting your authentication credentials:
 
   record = SimpleGeo::Record.new({
     :id => '1234',
-    :created => 1269832510,
+    :created => Time.now,
     :lat => 37.759650000000001,
     :lon => -122.42608,
     :layer => 'com.example.testlayer',
@@ -47,7 +47,7 @@ Start by requiring SimpleGeo and setting your authentication credentials:
   records = [
     SimpleGeo::Record.new({
       :id => '1234',
-      :created => 1269832510,
+      :created => Time.now,
       :lat => 37.759650000000001,
       :lon => -122.42608,
       :layer => 'com.example.testlayer',
@@ -57,7 +57,7 @@ Start by requiring SimpleGeo and setting your authentication credentials:
     }),
     SimpleGeo::Record.new({
       :id => '5678',
-      :created => 1269832510,
+      :created => Time.now,
       :lat => 37.755470000000003,
       :lon => -122.420646,
       :layer => 'com.example.testlayer',
