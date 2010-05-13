@@ -28,8 +28,7 @@ module SimpleGeo
           :coordinates => [ lon, lat ]
         },
         :properties => properties.merge({
-          :type => type,
-          :layer => layer
+          :type => type
         })
       }
     end
