@@ -10,7 +10,7 @@ http://help.simplegeo.com/faqs/api-documentation/endpoints
 
 Start by requiring SimpleGeo and setting your authentication credentials:
 
-  require 'simplegeo'
+  require 'simple_geo'
   SimpleGeo::Client.set_credentials('token', 'secret')
   
 === Getting a record
