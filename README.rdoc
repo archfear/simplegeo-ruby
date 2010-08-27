@@ -6,6 +6,12 @@ For the specific documentation on APIs (and the full list of parameters) see:
 
 http://help.simplegeo.com/faqs/api-documentation/endpoints
 
+== Installation
+
+Open the Terminal or other UNIX shell and type:
+
+    sudo gem install sg-ruby
+
 == Examples
 
 Start by requiring SimpleGeo and setting your authentication credentials:
