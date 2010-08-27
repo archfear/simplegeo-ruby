@@ -10,7 +10,7 @@ http://help.simplegeo.com/faqs/api-documentation/endpoints
 
 Open the Terminal or other UNIX shell and type:
 
-    sudo gem install sg-ruby
+  sudo gem install sg-ruby
 
 == Examples
 
