@@ -140,6 +140,11 @@ module SimpleGeo
         HashUtils.recursively_symbolize_keys(info)
       end
 
+      def get_locate(ip)
+        info = get Endpoint.locate(ip)
+        HashUtils.recursively_symbolize_keys(info)
+      end
+
       def get(endpoint, data=nil)
         raise NoConnectionEstablished  if @@connection.nil?
         @@connection.get endpoint, data
