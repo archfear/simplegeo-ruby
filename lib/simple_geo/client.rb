@@ -142,6 +142,11 @@ module SimpleGeo
         HashUtils.recursively_symbolize_keys(info)
       end
 
+      def get_contains_ip_address(ip)
+        info = get Endpoint.contains_ip_address(ip)
+        HashUtils.recursively_symbolize_keys(info)
+      end
+
       def get_locate(ip)
         info = get Endpoint.locate(ip)
         HashUtils.recursively_symbolize_keys(info)

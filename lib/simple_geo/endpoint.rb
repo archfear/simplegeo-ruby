@@ -53,6 +53,10 @@ module SimpleGeo
         endpoint_url "contains/#{lat},#{lon}.json"
       end
 
+      def contains_ip_address(ip)
+        endpoint_url "contains/#{ip}.json"
+      end
+
       def overlaps(south, west, north, east)
         endpoint_url "overlaps/#{south},#{west},#{north},#{east}.json"
       end
