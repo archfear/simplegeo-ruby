@@ -28,6 +28,10 @@ module SimpleGeo
         endpoint_url "records/#{layer}/nearby/#{lat},#{lon}.json"
       end
 
+      def nearby_ip_address(layer, ip)
+        endpoint_url "records/#{layer}/nearby/#{ip}.json"
+      end
+
       def nearby_address(lat, lon)
         endpoint_url "nearby/address/#{lat},#{lon}.json"
       end

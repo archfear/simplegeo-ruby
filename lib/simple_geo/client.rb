@@ -73,6 +73,8 @@ module SimpleGeo
       def get_nearby_records(layer, options)
         if options[:geohash]
           endpoint = Endpoint.nearby_geohash(layer, options.delete(:geohash))
+        elsif options[:ip]
+          endpoint = Endpoint.nearby_ip_address(layer, options.delete(:ip))
         elsif options[:lat] && options[:lon]
           endpoint = Endpoint.nearby_coordinates(layer,
             options.delete(:lat), options.delete(:lon))
