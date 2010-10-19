@@ -446,6 +446,21 @@ describe "Client" do
         records.should == @expected_records
       end
     end
+
+    context "with no nearby records" do
+      before do
+        stub_request :get,
+          'http://api.simplegeo.com/0.1/records/com.simplegeo.global.geonames/nearby/37.75965,-122.42608.json',
+          :fixture_file => 'empty_feature_collection.json'
+      end
+
+      it "should return a hash of nearby records" do
+        records = SimpleGeo::Client.get_nearby_records('com.simplegeo.global.geonames',
+          :lat => 37.759650000000001,
+          :lon => -122.42608)
+        records.should == { :next_cursor => nil, :records => [] }
+      end
+    end
   end
 
   context "getting a nearby address" do

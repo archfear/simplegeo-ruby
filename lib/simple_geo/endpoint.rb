@@ -28,6 +28,10 @@ module SimpleGeo
         endpoint_url "records/#{layer}/nearby/#{lat},#{lon}.json"
       end
 
+      def nearby_ip_address(layer, ip)
+        endpoint_url "records/#{layer}/nearby/#{ip}.json"
+      end
+
       def nearby_address(lat, lon)
         endpoint_url "nearby/address/#{lat},#{lon}.json"
       end
@@ -49,12 +53,20 @@ module SimpleGeo
         endpoint_url "contains/#{lat},#{lon}.json"
       end
 
+      def contains_ip_address(ip)
+        endpoint_url "contains/#{ip}.json"
+      end
+
       def overlaps(south, west, north, east)
         endpoint_url "overlaps/#{south},#{west},#{north},#{east}.json"
       end
 
       def boundary(id)
         endpoint_url "boundary/#{id}.json"
+      end
+
+      def locate(ip)
+        endpoint_url "locate/#{ip}.json"
       end
 
       def endpoint_url(path)

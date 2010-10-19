@@ -73,6 +73,8 @@ module SimpleGeo
       def get_nearby_records(layer, options)
         if options[:geohash]
           endpoint = Endpoint.nearby_geohash(layer, options.delete(:geohash))
+        elsif options[:ip]
+          endpoint = Endpoint.nearby_ip_address(layer, options.delete(:ip))
         elsif options[:lat] && options[:lon]
           endpoint = Endpoint.nearby_coordinates(layer,
             options.delete(:lat), options.delete(:lon))
@@ -137,6 +139,16 @@ module SimpleGeo
 
       def get_contains(lat, lon)
         info = get Endpoint.contains(lat, lon)
+        HashUtils.recursively_symbolize_keys(info)
+      end
+
+      def get_contains_ip_address(ip)
+        info = get Endpoint.contains_ip_address(ip)
+        HashUtils.recursively_symbolize_keys(info)
+      end
+
+      def get_locate(ip)
+        info = get Endpoint.locate(ip)
         HashUtils.recursively_symbolize_keys(info)
       end
 
