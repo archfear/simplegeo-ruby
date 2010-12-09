@@ -9,7 +9,7 @@ describe "Client" do
     context "with an id for an existing record" do
       before do
         stub_request :get,
-          'http://api.simplegeo.com/0.1/records/com.simplegeo.global.geonames/5373629.json',
+          'http://api.simplegeo.com/1.0/records/com.simplegeo.global.geonames/5373629.json',
           :fixture_file => 'get_record.json'
       end
 
@@ -47,7 +47,7 @@ describe "Client" do
     context "with an id for a nonexistant record" do
       before do
         stub_request :get,
-          'http://api.simplegeo.com/0.1/records/com.simplegeo.global.geonames/foo.json',
+          'http://api.simplegeo.com/1.0/records/com.simplegeo.global.geonames/foo.json',
           :fixture_file => 'no_such_record.json', :status => 404
       end
 
@@ -63,7 +63,7 @@ describe "Client" do
   context "adding/updating a record" do
     before do
       stub_request :put,
-        'http://api.simplegeo.com/0.1/records/io.path.testlayer/1234.json',
+        'http://api.simplegeo.com/1.0/records/io.path.testlayer/1234.json',
         :status => 202
     end
 
@@ -87,7 +87,7 @@ describe "Client" do
   context "deleting a record" do
     before do
       stub_request :delete,
-        'http://api.simplegeo.com/0.1/records/io.path.testlayer/1234.json',
+        'http://api.simplegeo.com/1.0/records/io.path.testlayer/1234.json',
         :status => 202
     end
 
@@ -102,7 +102,7 @@ describe "Client" do
     context "with ids for two existing records" do
       before do
         stub_request :get,
-          'http://api.simplegeo.com/0.1/records/com.simplegeo.us.business/41531696,41530629.json',
+          'http://api.simplegeo.com/1.0/records/com.simplegeo.us.business/41531696,41530629.json',
           :fixture_file => 'get_records.json'
       end
 
@@ -281,7 +281,7 @@ describe "Client" do
     context "with ids for nonexistant records" do
       before do
         stub_request :get,
-          'http://api.simplegeo.com/0.1/records/com.simplegeo.global.geonames/foo,bar.json',
+          'http://api.simplegeo.com/1.0/records/com.simplegeo.global.geonames/foo,bar.json',
           :fixture_file => 'nonetype_not_iterable.json', :status => 500
       end
 
@@ -296,7 +296,7 @@ describe "Client" do
   context "adding multiple records" do
     before do
       stub_request :post,
-        'http://api.simplegeo.com/0.1/records/io.path.testlayer.json',
+        'http://api.simplegeo.com/1.0/records/io.path.testlayer.json',
         :status => 202
     end
 
@@ -333,7 +333,7 @@ describe "Client" do
   context "getting a record's history" do
     before do
       stub_request :get,
-        'http://api.simplegeo.com/0.1/records/com.simplegeo.global.geonames/5373629/history.json',
+        'http://api.simplegeo.com/1.0/records/com.simplegeo.global.geonames/5373629/history.json',
         :fixture_file => 'get_history.json'
     end
 
@@ -421,7 +421,7 @@ describe "Client" do
     context "by lat and lon" do
       before do
         stub_request :get,
-          'http://api.simplegeo.com/0.1/records/com.simplegeo.global.geonames/nearby/37.75965,-122.42608.json',
+          'http://api.simplegeo.com/1.0/records/com.simplegeo.global.geonames/nearby/37.75965,-122.42608.json',
           :fixture_file => 'get_nearby.json'
       end
 
@@ -436,7 +436,7 @@ describe "Client" do
     context "by geohash" do
       before do
         stub_request :get,
-          'http://api.simplegeo.com/0.1/records/com.simplegeo.global.geonames/nearby/9q8yy1ujcsfm.json',
+          'http://api.simplegeo.com/1.0/records/com.simplegeo.global.geonames/nearby/9q8yy1ujcsfm.json',
           :fixture_file => 'get_nearby.json'
       end
 
@@ -450,7 +450,7 @@ describe "Client" do
     context "with no nearby records" do
       before do
         stub_request :get,
-          'http://api.simplegeo.com/0.1/records/com.simplegeo.global.geonames/nearby/37.75965,-122.42608.json',
+          'http://api.simplegeo.com/1.0/records/com.simplegeo.global.geonames/nearby/37.75965,-122.42608.json',
           :fixture_file => 'empty_feature_collection.json'
       end
 
@@ -466,7 +466,7 @@ describe "Client" do
   context "getting a nearby address" do
     before do
       stub_request :get,
-        'http://api.simplegeo.com/0.1/nearby/address/37.75965,-122.42608.json',
+        'http://api.simplegeo.com/1.0/nearby/address/37.75965,-122.42608.json',
         :fixture_file => 'nearby_address.json'
     end
 
@@ -490,7 +490,7 @@ describe "Client" do
     context "for an existing layer" do
       before do
         stub_request :get,
-          'http://api.simplegeo.com/0.1/layer/io.path.testlayer.json',
+          'http://api.simplegeo.com/1.0/layer/io.path.testlayer.json',
           :fixture_file => 'layer_info.json'
       end
 
@@ -507,7 +507,7 @@ describe "Client" do
     context "for a nonexistant layer" do
       before do
         stub_request :get,
-          'http://api.simplegeo.com/0.1/layer/io.path.testlayer.json',
+          'http://api.simplegeo.com/1.0/layer/io.path.testlayer.json',
           :status => 404
       end
 
@@ -522,7 +522,7 @@ describe "Client" do
   context "getting SpotRank information for a day, hour and location" do
     before do
       stub_request :get,
-        'http://api.simplegeo.com/0.1/density/sat/16/37.75965,-122.42608.json',
+        'http://api.simplegeo.com/1.0/density/sat/16/37.75965,-122.42608.json',
         :fixture_file => 'get_density_by_hour.json'
     end
 
@@ -552,7 +552,7 @@ describe "Client" do
   context "getting SpotRank information for a day and location" do
     before do
       stub_request :get,
-        'http://api.simplegeo.com/0.1/density/sat/37.75965,-122.42608.json',
+        'http://api.simplegeo.com/1.0/density/sat/37.75965,-122.42608.json',
         :fixture_file => 'get_density_by_day.json'
     end
 
@@ -980,7 +980,7 @@ describe "Client" do
   context "getting contains info for a set of coordinates" do
     before do
       stub_request :get,
-        'http://api.simplegeo.com/0.1/contains/37.7587890625,-122.4267578125.json',
+        'http://api.simplegeo.com/1.0/contains/37.7587890625,-122.4267578125.json',
         :fixture_file => 'contains.json'
     end
 
@@ -1111,7 +1111,7 @@ describe "Client" do
   context "getting overlaps info for a set of coordinates" do
     before do
       stub_request :get,
-        'http://api.simplegeo.com/0.1/overlaps/32.528832,-124.482003,42.009517,-114.131211.json',
+        'http://api.simplegeo.com/1.0/overlaps/32.528832,-124.482003,42.009517,-114.131211.json',
         :fixture_file => 'overlaps.json'
     end
 
@@ -1166,7 +1166,7 @@ describe "Client" do
   # context "getting boundary info by id" do
   #   before do
   #     stub_request :get,
-  #       'http://api.simplegeo.com/0.1/boundary/Neighborhood:Mission_Dolores:9q8yy4.json',
+  #       'http://api.simplegeo.com/1.0/boundary/Neighborhood:Mission_Dolores:9q8yy4.json',
   #       :fixture_file => 'boundary.json'
   #   end
   #
