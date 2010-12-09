@@ -109,6 +109,11 @@ module SimpleGeo
         geojson_hash = get Endpoint.context(lat, lon)
         HashUtils.recursively_symbolize_keys geojson_hash
       end
+      
+      def get_places(lat, lon)
+        geojson_hash = get Endpoint.places(lat, lon)
+        HashUtils.recursively_symbolize_keys geojson_hash
+      end
 
       def get_layer_information(layer)
         layer_info = get Endpoint.layer(layer)

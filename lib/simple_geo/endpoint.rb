@@ -39,6 +39,10 @@ module SimpleGeo
       def context(lat, lon)
         endpoint_url "context/#{lat},#{lon}.json"
       end
+      
+      def places(lat, lon)
+        endpoint_url "places/#{lat},#{lon}.json"
+      end
 
       def density(lat, lon, day, hour=nil)
         if hour.nil?
