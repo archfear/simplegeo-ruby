@@ -110,8 +110,22 @@ module SimpleGeo
         HashUtils.recursively_symbolize_keys geojson_hash
       end
       
-      def get_places(lat, lon)
-        geojson_hash = get Endpoint.places(lat, lon)
+      # Required
+      #   lat - The latitude of the point
+      #   lon - The longitude of the point
+      # 
+      # Optional
+      #   q - A search term. For example, q=Starbucks would return all places matching the name Starbucks.
+      #   category - Filter by an exact classifier (types, categories, subcategories, tags)
+      #   radius - Search by radius in kilometers. Default radius is 25km.
+      # 
+      # If you provide only a q parameter it does a full-text search
+      # of the name and classifiers of a place. If you provide only the category parameter 
+      # it does a full-text search of all classifiers. If you provide q and category, 
+      # q is a full-text search of place names and category is an exact match
+      # to one or more of the classifiers. 
+      def get_places(lat, lon, options={})
+        geojson_hash = get Endpoint.places(lat, lon, options)
         HashUtils.recursively_symbolize_keys geojson_hash
       end
 

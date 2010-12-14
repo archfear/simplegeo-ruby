@@ -40,8 +40,12 @@ module SimpleGeo
         endpoint_url "context/#{lat},#{lon}.json"
       end
       
-      def places(lat, lon)
-        endpoint_url "places/#{lat},#{lon}.json"
+      def places(lat, lon, options)
+        params = ''
+        options.each do |k,v|
+          params << "#{k}=#{v}&"
+        end if options
+        endpoint_url "places/#{lat},#{lon}.json?#{params.chop!}"
       end
 
       def density(lat, lon, day, hour=nil)

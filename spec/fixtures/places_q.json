@@ -1,0 +1,418 @@
+{
+   "total" : 13,
+   "type" : "FeatureCollection",
+   "features": [
+    {
+     "geometry": {
+      "type" : "Point",
+      "coordinates": [
+       -86.112928,
+       42.801396
+      ]
+      },
+     "type" : "Feature",
+     "id" : "SG_6I3KqAqKIqpRLaduUcUBRr_42.801396_-86.112928@1291674002",
+     "properties": {
+      "province" : "MI",
+      "city" : "Holland",
+      "name" : "Duca The Dutch Carpenter",
+      "tags": [
+       "tile",
+       "dealer"
+      ],
+      "country" : "US",
+      "phone" : "+1 616 494 0404",
+      "address" : "129 Howard Ave",
+      "owner" : "simplegeo",
+      "classifiers": [
+       {
+        "category" : "Building & Trades",
+        "type" : "Services",
+        "subcategory" : "Construction"
+        }
+      ],
+      "postcode" : "49424"
+      }
+     },
+     {
+     "geometry": {
+      "type" : "Point",
+      "coordinates": [
+       -86.107095,
+       42.776685
+      ]
+      },
+     "type" : "Feature",
+     "id" : "SG_6ucOjwWPjOCcbHeyMJnoY9_42.776685_-86.107095@1291674002",
+     "properties": {
+      "province" : "MI",
+      "city" : "Holland",
+      "name" : "Dutch Colonial Inn",
+      "tags": [
+       "house",
+       "operation",
+       "construction"
+      ],
+      "country" : "US",
+      "phone" : "+1 616 396 3664",
+      "address" : "560 Central Ave",
+      "owner" : "simplegeo",
+      "classifiers": [
+       {
+        "category" : "Travel",
+        "type" : "Entertainment",
+        "subcategory" : "Hotels & Motels"
+        }
+      ],
+      "postcode" : "49423"
+      }
+     },
+     {
+     "geometry": {
+      "type" : "Point",
+      "coordinates": [
+       -86.098187,
+       42.775013
+      ]
+      },
+     "type" : "Feature",
+     "id" : "SG_6mO5cCEdHU8AFO0OxvLQgP_42.775013_-86.098187@1291674002",
+     "properties": {
+      "province" : "MI",
+      "city" : "Holland",
+      "name" : "Big Dutch Fleet Credit Union",
+      "tags": [
+       "state"
+      ],
+      "country" : "US",
+      "phone" : "+1 616 396 5000",
+      "address" : "215 E 25th St",
+      "owner" : "simplegeo",
+      "classifiers": [
+       {
+        "category" : "Banks & Credit Unions",
+        "type" : "Services",
+        "subcategory" : "Bank"
+        }
+      ],
+      "postcode" : "49423"
+      }
+     },
+     {
+     "geometry": {
+      "type" : "Point",
+      "coordinates": [
+       -86.126474,
+       42.781931
+      ]
+      },
+     "type" : "Feature",
+     "id" : "SG_1SO3yvCM1dWdnSlo3vywBI_42.781931_-86.126474@1291674002",
+     "properties": {
+      "province" : "MI",
+      "city" : "Holland",
+      "name" : "Dutch Made Custom Cabinetry",
+      "tags": [
+       "equipment",
+       "kitchen",
+       "cabinet"
+      ],
+      "country" : "US",
+      "phone" : "+1 616 392 4480",
+      "address" : "420 W 17th St",
+      "owner" : "simplegeo",
+      "classifiers": [
+       {
+        "category" : "Home & Garden",
+        "type" : "Retail Goods",
+        "subcategory" : "Furniture"
+        }
+      ],
+      "postcode" : "49423"
+      }
+     },
+     {
+     "geometry": {
+      "type" : "Point",
+      "coordinates": [
+       -86.13011,
+       42.779354
+      ]
+      },
+     "type" : "Feature",
+     "id" : "SG_6jFqymBz2f0fL6isDiizHO_42.779354_-86.130110@1291674002",
+     "properties": {
+      "province" : "MI",
+      "city" : "Holland",
+      "name" : "Dutch Treat Salads",
+      "tags": [
+       "product",
+       "salad"
+      ],
+      "country" : "US",
+      "phone" : "+1 616 396 3392",
+      "address" : "507 W 20th St",
+      "owner" : "simplegeo",
+      "classifiers": [
+       {
+        "category" : "Manufacturing",
+        "type" : "Manufacturing & Wholesale Goods",
+        "subcategory" : "Food"
+        }
+      ],
+      "postcode" : "49423"
+      }
+     },
+     {
+     "geometry": {
+      "type" : "Point",
+      "coordinates": [
+       -86.089768,
+       42.810865
+      ]
+      },
+     "type" : "Feature",
+     "id" : "SG_1Y0brcGA5S8IF0Phta2BwM_42.810865_-86.089768@1291805576",
+     "properties": {
+      "province" : "MI",
+      "city" : "Holland",
+      "name" : "Dutch Subway LLC",
+      "tags": [
+       
+      ],
+      "country" : "US",
+      "phone" : "+1 616 393 7991",
+      "address" : "2229 N Park Dr",
+      "owner" : "simplegeo",
+      "postcode" : "49424",
+      "classifiers": [
+       {
+        "category" : "Restaurant",
+        "type" : "Food & Drink",
+        "subcategory" : ""
+        }
+      ]
+      }
+     },
+     {
+     "geometry": {
+      "type" : "Point",
+      "coordinates": [
+       -86.087692,
+       42.811998
+      ]
+      },
+     "type" : "Feature",
+     "id" : "SG_20goKPd6BzmzAl787Hmi5h_42.811998_-86.087692@1291674002",
+     "properties": {
+      "province" : "MI",
+      "website" : "www.dutchvillage.com",
+      "name" : "Dutch Village",
+      "tags": [
+       "shop"
+      ],
+      "country" : "US",
+      "phone" : "+1 616 396 1475",
+      "city" : "Holland",
+      "address" : "12350 James St",
+      "owner" : "simplegeo",
+      "classifiers": [
+       {
+        "category" : "Shopping",
+        "type" : "Retail Goods",
+        "subcategory" : "Gifts & Souvenirs"
+        }
+      ],
+      "postcode" : "49424"
+      }
+     },
+     {
+     "geometry": {
+      "type" : "Point",
+      "coordinates": [
+       -86.122281,
+       42.812614
+      ]
+      },
+     "type" : "Feature",
+     "id" : "SG_7BxMkAcMduxYrtRlSP7JJ5_42.812614_-86.122281@1291674002",
+     "properties": {
+      "province" : "MI",
+      "city" : "Holland",
+      "name" : "Dutch Delite Bakery",
+      "tags": [
+       "baker"
+      ],
+      "country" : "US",
+      "phone" : "+1 616 399 6050",
+      "address" : "501 Butternut Dr",
+      "owner" : "simplegeo",
+      "classifiers": [
+       {
+        "category" : "Food & Beverages",
+        "type" : "Retail Goods",
+        "subcategory" : "Bakery"
+        }
+      ],
+      "postcode" : "49424"
+      }
+     },
+     {
+     "geometry": {
+      "type" : "Point",
+      "coordinates": [
+       -86.038383,
+       42.805126
+      ]
+      },
+     "type" : "Feature",
+     "id" : "SG_5BE2NtLKOzhR4GEJHqP70I_42.805126_-86.038383@1291805576",
+     "properties": {
+      "province" : "MI",
+      "city" : "Zeeland",
+      "name" : "Dutch St Camping & Recreation",
+      "tags": [
+       "trailer"
+      ],
+      "country" : "US",
+      "phone" : "+1 616 772 4303",
+      "address" : "10300 Gordon St",
+      "owner" : "simplegeo",
+      "postcode" : "49464",
+      "classifiers": [
+       {
+        "category" : "Travel",
+        "type" : "Entertainment",
+        "subcategory" : "Campground"
+        }
+      ]
+      }
+     },
+     {
+     "geometry": {
+      "type" : "Point",
+      "coordinates": [
+       -86.038383,
+       42.805126
+      ]
+      },
+     "type" : "Feature",
+     "id" : "SG_6EqRqswuhnjdXJpzV4tImf_42.805126_-86.038383@1291805576",
+     "properties": {
+      "province" : "MI",
+      "city" : "Zeeland",
+      "name" : "Dutch Treat Camping & Rec",
+      "tags": [
+       
+      ],
+      "country" : "US",
+      "phone" : "+1 616 772 4303",
+      "address" : "10300 Gordon St",
+      "owner" : "simplegeo",
+      "postcode" : "49464",
+      "classifiers": [
+       {
+        "category" : "Travel",
+        "type" : "Entertainment",
+        "subcategory" : "Campground"
+        }
+      ]
+      }
+     },
+     {
+     "geometry": {
+      "type" : "Point",
+      "coordinates": [
+       -86.094211,
+       42.841058
+      ]
+      },
+     "type" : "Feature",
+     "id" : "SG_3lJVWKDOt3xnYwgq26dGr8_42.841058_-86.094211@1291674002",
+     "properties": {
+      "province" : "MI",
+      "city" : "Holland",
+      "name" : "Dutch Delft Blue",
+      "tags": [
+       
+      ],
+      "country" : "US",
+      "phone" : "+1 616 399 1803",
+      "address" : "12755 Quincy St",
+      "owner" : "simplegeo",
+      "classifiers": [
+       {
+        "category" : "Shopping",
+        "type" : "Retail Goods",
+        "subcategory" : "Gifts & Souvenirs"
+        }
+      ],
+      "postcode" : "49424"
+      }
+     },
+     {
+     "geometry": {
+      "type" : "Point",
+      "coordinates": [
+       -86.067609,
+       42.739675
+      ]
+      },
+     "type" : "Feature",
+     "id" : "SG_6ei1IIEtJ8jLWel1t3QsZv_42.739675_-86.067609@1291674002",
+     "properties": {
+      "province" : "MI",
+      "city" : "Holland",
+      "name" : "Dutch Touch Truck Wash",
+      "tags": [
+       "truck",
+       "cleaning"
+      ],
+      "country" : "US",
+      "phone" : "+1 616 396 0679",
+      "address" : "4356 Lincoln Rd",
+      "owner" : "simplegeo",
+      "classifiers": [
+       {
+        "category" : "Retail",
+        "type" : "Services",
+        "subcategory" : "Car Wash"
+        }
+      ],
+      "postcode" : "49423"
+      }
+     },
+     {
+     "geometry": {
+      "type" : "Point",
+      "coordinates": [
+       -85.979829,
+       42.843688
+      ]
+},
+     "type" : "Feature",
+     "id" : "SG_5Sbj5KbLNCSIfh3P0zuyD0_42.843688_-85.979829@1291674002",
+     "properties": {
+      "province" : "MI",
+      "city" : "Zeeland",
+      "name" : "Dutch Touch Growers Inc",
+      "tags": [
+       "nursery",
+       "tree"
+      ],
+"country" : "US",
+      "phone" : "+1 616 875 7416",
+      "address" : "4135 80th Ave",
+      "owner" : "simplegeo",
+      "classifiers": [
+       {
+        "category" : "Wholesale",
+        "type" : "Manufacturing & Wholesale Goods",
+        "subcategory" : "Plants"
+        }
+      ],
+"postcode" : "49464"
+      }
+     }
+   ]
+   }
