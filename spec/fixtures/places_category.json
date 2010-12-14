@@ -1,0 +1,296 @@
+{
+   "total" : 9,
+   "type" : "FeatureCollection",
+   "features": [
+    {
+     "geometry": {
+      "type" : "Point",
+      "coordinates": [
+       -86.106339,
+       42.790389
+      ]
+      },
+     "type" : "Feature",
+     "id" : "SG_5mG4NZzFGavcAh7OAKIQH5_42.790389_-86.106339@1291805576",
+     "properties": {
+      "province" : "MI",
+      "website" : "www.jpscoffee.com",
+      "name" : "J P's Coffee & Espresso Bar",
+      "tags": [
+       "shop",
+       "coffee"
+      ],
+      "country" : "US",
+      "phone" : "+1 616 396 5465",
+      "city" : "Holland",
+      "address" : "57 E 8th St",
+      "owner" : "simplegeo",
+      "postcode" : "49423",
+      "classifiers": [
+       {
+        "category" : "Restaurant",
+        "type" : "Food & Drink",
+        "subcategory" : ""
+        }
+      ]
+      }
+     },
+     {
+     "geometry": {
+      "type" : "Point",
+      "coordinates": [
+       -86.100164,
+       42.780542
+      ]
+      },
+     "type" : "Feature",
+     "id" : "SG_0QKaDcYrJbX6OtfwCZcrMt_42.780542_-86.100164@1291805576",
+     "properties": {
+      "province" : "MI",
+      "city" : "Holland",
+      "name" : "Leaf & Bean Too",
+      "tags": [
+       "shop",
+       "coffee"
+      ],
+      "country" : "US",
+      "phone" : "+1 616 355 2251",
+      "address" : "451 Columbia Ave",
+      "owner" : "simplegeo",
+      "postcode" : "49423",
+      "classifiers": [
+       {
+        "category" : "Restaurant",
+        "type" : "Food & Drink",
+        "subcategory" : ""
+        }
+      ]
+      }
+     },
+     {
+     "geometry": {
+      "type" : "Point",
+      "coordinates": [
+       -86.101407,
+       42.805658
+      ]
+      },
+     "type" : "Feature",
+     "id" : "SG_7eWRRtNkDrWZfQQtMo3PAl_42.805658_-86.101407@1291805576",
+     "properties": {
+      "province" : "MI",
+      "city" : "Holland",
+      "name" : "Joe 2 Go",
+      "tags": [
+       "shop",
+       "coffee"
+      ],
+      "country" : "US",
+      "phone" : "+1 616 395 5950",
+      "address" : "166 E Lakewood Blvd",
+      "owner" : "simplegeo",
+      "postcode" : "49424",
+      "classifiers": [
+       {
+        "category" : "Restaurant",
+        "type" : "Food & Drink",
+        "subcategory" : ""
+        }
+      ]
+      }
+     },
+     {
+     "geometry": {
+      "type" : "Point",
+      "coordinates": [
+       -86.123647,
+       42.797738
+      ]
+      },
+     "type" : "Feature",
+     "id" : "SG_5jMWhnI7je8uIxRFoIA88u_42.797738_-86.123647@1291805576",
+     "properties": {
+      "province" : "MI",
+      "city" : "Holland",
+      "name" : "Perfect Cup Cafe",
+      "tags": [
+       "shop",
+       "coffee"
+      ],
+      "country" : "US",
+      "phone" : "+1 616 395 2593",
+      "address" : "321 Douglas Ave",
+      "owner" : "simplegeo",
+      "postcode" : "49424",
+      "classifiers": [
+       {
+        "category" : "Restaurant",
+        "type" : "Food & Drink",
+        "subcategory" : ""
+        }
+      ]
+      }
+     },
+     {
+     "geometry": {
+      "type" : "Point",
+      "coordinates": [
+       -86.059282,
+       42.804026
+      ]
+      },
+     "type" : "Feature",
+     "id" : "SG_74Ue55SNQhHEfPbZSSHI5a_42.804026_-86.059282@1291805576",
+     "properties": {
+      "province" : "MI",
+      "city" : "Holland",
+      "name" : "Carpe Latte",
+      "tags": [
+       "shop",
+       "coffee"
+      ],
+      "country" : "US",
+      "phone" : "+1 616 396 6005",
+      "address" : "11260 Chicago Dr",
+      "owner" : "simplegeo",
+      "postcode" : "49424",
+      "classifiers": [
+       {
+        "category" : "Restaurant",
+        "type" : "Food & Drink",
+        "subcategory" : ""
+        }
+      ]
+      }
+     },
+     {
+     "geometry": {
+      "type" : "Point",
+      "coordinates": [
+       -86.016332,
+       42.812393
+      ]
+      },
+     "type" : "Feature",
+     "id" : "SG_1gQsUcVZpEh6omTmvGFXU6_42.812393_-86.016332@1291805576",
+     "properties": {
+      "province" : "MI",
+      "city" : "Zeeland",
+      "name" : "Sweet Bean Coffee & Espresso",
+      "tags": [
+       "shop",
+       "coffee"
+      ],
+      "country" : "US",
+      "phone" : "+1 616 772 6450",
+      "address" : "111 E Main Ave",
+      "owner" : "simplegeo",
+      "postcode" : "49464",
+      "classifiers": [
+       {
+        "category" : "Restaurant",
+        "type" : "Food & Drink",
+        "subcategory" : ""
+        }
+      ]
+      }
+     },
+     {
+     "geometry": {
+      "type" : "Point",
+      "coordinates": [
+       -86.004882,
+       42.826855
+      ]
+      },
+     "type" : "Feature",
+     "id" : "SG_5OHDBISAiQj2jpjCBAbMTO_42.826855_-86.004882@1291674002",
+     "properties": {
+      "province" : "MI",
+      "city" : "Zeeland",
+      "name" : "CVC Coffee Svc",
+      "tags": [
+       "tea",
+       "coffee"
+      ],
+      "country" : "US",
+      "phone" : "+1 616 896 8882",
+      "address" : "790 Case Karsten Dr",
+      "owner" : "simplegeo",
+      "classifiers": [
+       {
+        "category" : "Food & Beverages",
+        "type" : "Retail Goods",
+        "subcategory" : "Specialty"
+        }
+      ],
+      "postcode" : "49464"
+      }
+     },
+     {
+     "geometry": {
+      "type" : "Point",
+      "coordinates": [
+       -86.204341,
+       42.656513
+      ]
+      },
+     "type" : "Feature",
+     "id" : "SG_4hMBeWsWfPMa03AIZFy9cQ_42.656513_-86.204341@1291674002",
+     "properties": {
+      "province" : "MI",
+      "website" : "www.uncommongroundscafe.com",
+      "name" : "Uncommon Grounds",
+      "tags": [
+       "tea",
+       "coffee"
+      ],
+      "country" : "US",
+      "phone" : "+1 269 857 3333",
+      "city" : "Saugatuck",
+      "address" : "127 Hoffman St",
+      "owner" : "simplegeo",
+      "classifiers": [
+       {
+        "category" : "Food & Beverages",
+        "type" : "Retail Goods",
+        "subcategory" : "Specialty"
+        }
+      ],
+      "postcode" : "49453"
+      }
+     },
+     {
+     "geometry": {
+      "type" : "Point",
+      "coordinates": [
+       -86.200469,
+       42.643744
+      ]
+},
+     "type" : "Feature",
+     "id" : "SG_0IzakqfFENxLpL1nSgIoSw_42.643744_-86.200469@1291805576",
+     "properties": {
+      "province" : "MI",
+      "city" : "Douglas",
+      "name" : "Respite",
+      "tags": [
+       "shop",
+       "coffee"
+      ],
+"country" : "US",
+      "phone" : "+1 269 857 5411",
+      "address" : "48 E Center St",
+      "owner" : "simplegeo",
+      "postcode" : "49406",
+      "classifiers": [
+       {
+        "category" : "Restaurant",
+        "type" : "Food & Drink",
+        "subcategory" : ""
+        }
+      ]
+}
+     }
+   ]
+   }
