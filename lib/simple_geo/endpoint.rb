@@ -61,10 +61,6 @@ module SimpleGeo
         endpoint_url path
       end
 
-      def layer(layer)
-        endpoint_url "layer/#{layer}.json"
-      end
-
       def contains(lat, lon)
         endpoint_url "contains/#{lat},#{lon}.json"
       end

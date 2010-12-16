@@ -553,39 +553,6 @@ describe "Client" do
     end
   end
 
-  context "getting layer information" do
-    context "for an existing layer" do
-      before do
-        stub_request :get,
-          'http://api.simplegeo.com/1.0/layer/io.path.testlayer.json',
-          :fixture_file => 'layer_info.json'
-      end
-
-      it "should return a hash containing the layer information" do
-        layer_info = SimpleGeo::Client.get_layer_information('io.path.testlayer')
-        layer_info.should == {
-          :name => "io.path.testlayer",
-          :public => false,
-          :callback_urls => []
-        }
-      end
-    end
-
-    context "for a nonexistant layer" do
-      before do
-        stub_request :get,
-          'http://api.simplegeo.com/1.0/layer/io.path.testlayer.json',
-          :status => 404
-      end
-
-      it "should raise a NotFound exception" do
-        lambda {
-          SimpleGeo::Client.get_layer_information('io.path.testlayer')
-        }.should raise_exception(SimpleGeo::NotFound)
-      end
-    end
-  end
-
   context "getting SpotRank information for a day, hour and location" do
     before do
       stub_request :get,

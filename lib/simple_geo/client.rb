@@ -129,12 +129,6 @@ module SimpleGeo
         HashUtils.recursively_symbolize_keys geojson_hash
       end
 
-      def get_layer_information(layer)
-        layer_info = get Endpoint.layer(layer)
-        layer_info.delete('selfLink')
-        HashUtils.symbolize_keys(layer_info)
-      end
-
       def get_density(lat, lon, day, hour=nil)
         geojson_hash = get Endpoint.density(lat, lon, day, hour)
         geojson_hash = HashUtils.recursively_symbolize_keys(geojson_hash)
