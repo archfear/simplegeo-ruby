@@ -37,18 +37,18 @@ module SimpleGeo
       end
       
       def context(lat, lon)
-        endpoint_url "context/#{lat},#{lon}.json"
+        endpoint_url "context/#{lat},#{lon}.json", '1.0'
       end
       
       def places(lat, lon, options)
         if options.empty?
-          endpoint_url "places/#{lat},#{lon}.json"
+          endpoint_url "places/#{lat},#{lon}.json", '1.0'
         else
           params = ""
           options.each do |k,v|
             params << "#{k}=#{v}&"
           end
-          endpoint_url "places/#{lat},#{lon}.json?#{params.chop!}"
+          endpoint_url "places/#{lat},#{lon}.json?#{params.chop!}", '1.0'
         end
       end
 
@@ -77,8 +77,8 @@ module SimpleGeo
         endpoint_url "boundary/#{id}.json"
       end
 
-      def endpoint_url(path)
-        [REALM, API_VERSION, path].join('/')
+      def endpoint_url(path, version = API_VERSION)
+        [REALM, version, path].join('/')
       end
     end
 
