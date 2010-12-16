@@ -145,22 +145,25 @@ module SimpleGeo
       end
 
       def get_overlaps(south, west, north, east, options=nil)
+        warn "[DEPRECATION] `SimpleGeo::Client.get_overlaps` is deprecated."
         info = get Endpoint.overlaps(south, west, north, east), options
         HashUtils.recursively_symbolize_keys(info)
       end
 
       # this API call seems to always return a 404
       def get_boundary(id)
+        warn "[DEPRECATION] `SimpleGeo::Client.get_boundary` is deprecated. Use `SimpleGeo::Client.get_feature` instead."
         info = get Endpoint.boundary(id)
         HashUtils.recursively_symbolize_keys(info)
       end
 
       def get_contains(lat, lon)
-        info = get Endpoint.contains(lat, lon)
-        HashUtils.recursively_symbolize_keys(info)
+        warn "[DEPRECATION] `SimpleGeo::Client.get_contains` is deprecated. Use `SimpleGeo::Client.get_context` instead."
+        get_context(lat, lon)
       end
 
       def get_contains_ip_address(ip)
+        warn "[DEPRECATION] `SimpleGeo::Client.get_contains` is deprecated."
         info = get Endpoint.contains_ip_address(ip)
         HashUtils.recursively_symbolize_keys(info)
       end

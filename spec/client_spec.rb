@@ -1014,7 +1014,7 @@ describe "Client" do
   context "getting contains info for a set of coordinates" do
     before do
       stub_request :get,
-        'http://api.simplegeo.com/0.1/contains/37.7587890625,-122.4267578125.json',
+        'http://api.simplegeo.com/1.0/context/37.7587890625,-122.4267578125.json',
         :fixture_file => 'contains.json'
     end
 
