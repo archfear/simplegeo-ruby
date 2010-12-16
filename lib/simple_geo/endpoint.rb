@@ -81,10 +81,6 @@ module SimpleGeo
         endpoint_url "boundary/#{id}.json"
       end
 
-      def locate(ip)
-        endpoint_url "locate/#{ip}.json"
-      end
-
       def endpoint_url(path)
         [REALM, API_VERSION, path].join('/')
       end
